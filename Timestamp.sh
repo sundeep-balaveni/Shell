@@ -13,3 +13,8 @@ $user_name
 $PWD
 
 "$@"
+
+
+Frutis = {"apple" "banana" "Mango"}
+
+echo I have ${Frutis} in my hand 
