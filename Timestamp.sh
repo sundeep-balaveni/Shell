@@ -12,3 +12,4 @@ $user_name
 
 $PWD
 
+"$@"
