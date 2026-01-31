@@ -2,9 +2,10 @@
 
 USERID=$(id -u)
 
-if [ USERID -nq 0 ]; then 
+if [ USERID -nq 0 ]; then
+ 
 
-    echo ("run this script as sudo access")
+    echo "run this script as sudo access"
 
 fi 
 
