@@ -22,9 +22,9 @@ echo I have ${Frutis[@]} in my hand
 
  echo "Enter the num please"
 
- read "NUM"
+ read NUM
 
- if [$NUM -gt 10]; then
+ if [ $NUM -gt 10 ]; then
 
  echo "Greater than 10"
 
