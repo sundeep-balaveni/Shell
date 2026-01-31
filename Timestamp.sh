@@ -24,7 +24,7 @@ echo I have ${Frutis[@]} in my hand
 
  read "NUM"
 
- if [$NUM -gt 10];
+ if [$NUM -gt 10]; then
 
  echo "Greater than 10"
 
