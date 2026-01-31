@@ -1,5 +1,6 @@
 #!/bin/bash
 
-person = ("ramesh"  "suresh")
+echo "whis is this :: "
+read "user_name"
 
-echo "$person[0] good boy  and $person[1] is bad boy"
+echo "hi $user_name"
