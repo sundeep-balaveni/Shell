@@ -18,3 +18,14 @@ $PWD
 Frutis=("apple" "banana" "Mango")
 
 echo I have ${Frutis[@]} in my hand 
+ 
+
+ Echo "Enter the num please"
+
+ read "NUM"
+
+ if [$NUM -gt 10];
+
+ echo "Greater than 10"
+
+ fi
