@@ -20,16 +20,12 @@ Frutis=("apple" "banana" "Mango")
 echo I have ${Frutis[@]} in my hand 
  
 
- echo "Enter the num please"
+echo "Enter the num please"
 
- read NUM
+read NUM
 
- if [ $NUM -gt 10 ]; then
-
- echo "Greater than 10"
-
- elif [ $NUM -lt 10 ]; then
-
- echo "Less than 10"
-
- fi
+if [ $NUM -gt 10 ]; then
+    echo "Greater than 10"
+elif [ $NUM -lt 10 ]; then
+    echo "Less than 10"
+fi
