@@ -20,7 +20,7 @@ Frutis=("apple" "banana" "Mango")
 echo I have ${Frutis[@]} in my hand 
  
 
- Echo "Enter the num please"
+ echo "Enter the num please"
 
  read "NUM"
 
