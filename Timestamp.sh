@@ -28,7 +28,7 @@ echo I have ${Frutis[@]} in my hand
 
  echo "Greater than 10"
 
- elif [$NUM -lt 10]; then
+ elif [ $NUM -lt 10 ]; then
 
  echo "Less than 10"
 
