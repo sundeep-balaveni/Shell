@@ -4,4 +4,4 @@ TIMESTAMP=$(date)
 
 echo "Script excecuted in $TIMESTAMP"
 
-$0
+$HOME
