@@ -17,4 +17,4 @@ $PWD
 
 Frutis=("apple" "banana" "Mango")
 
-echo I have ${Frutis[0]} in my hand 
+echo I have ${Frutis[@]} in my hand 
