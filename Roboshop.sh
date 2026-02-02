@@ -23,4 +23,3 @@ echo "EC2 Instance launched with ID: $INSTANCE_ID"
 # Optional: wait until instance is running
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID --region $REGION
 echo "EC2 Instance $INSTANCE_ID is now running."
-#
