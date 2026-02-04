@@ -5,9 +5,11 @@ AMI_ID="ami-0220d79f3f480ecf5"     # Amazon Linux 2
 INSTANCE_TYPE="t3.micro"
 SECURITY_GROUP_ID="sg-0d6a680fc44091364"
 SUBNET_ID="subnet-0a79d446f5450259c"
-TAG_NAME="ShellCreatedEC2"
+TAG_NAME="Frontend"
 
-# Launch the EC2 instance
+for instance in $@
+
+do 
 INSTANCE_ID=$(aws ec2 run-instances \
     --region $REGION \
     --image-id $AMI_ID \
@@ -18,15 +20,45 @@ INSTANCE_ID=$(aws ec2 run-instances \
     --query "Instances[0].InstanceId" \
     --output text)
 
+
+# Launch the EC2 instance
+
 echo "EC2 Instance launched with ID: $INSTANCE_ID"
 
 # Optional: wait until instance is running
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID --region $REGION
 echo "EC2 Instance $INSTANCE_ID is now running."
 
+
+if [$instance == "frontend"] ; then 
+
+#printing IP address 
 PUBLIC_IP=$(aws ec2 describe-instances \
   --instance-ids "$INSTANCE_ID" \
   --query 'Reservations[0].Instances[0].PublicIpAddress' \
   --output text)
+  echo " this is Frontend   $PUBLIC_IP"
 
-echo " this is Frontend   $PUBLIC_IP"
+
+
+else 
+
+PUBLIC_IP=$(aws ec2 describe-instances \
+  --instance-ids "$INSTANCE_ID" \
+  --query 'Reservations[0].Instances[0].PrivateIpAddress' \
+  --output text)
+  echo " this is Frontend   $PUBLIC_IP"
+
+fi
+
+
+
+
+
+
+
+
+
+
+
+done
