@@ -23,3 +23,10 @@ echo "EC2 Instance launched with ID: $INSTANCE_ID"
 # Optional: wait until instance is running
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID --region $REGION
 echo "EC2 Instance $INSTANCE_ID is now running."
+
+PUBLIC_IP=$(aws ec2 describe-instances \
+  --instance-ids "$INSTANCE_ID" \
+  --query 'Reservations[0].Instances[0].PublicIpAddress' \
+  --output text)
+
+echo "$PUBLIC_IP"
