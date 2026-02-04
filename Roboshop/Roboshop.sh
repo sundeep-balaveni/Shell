@@ -5,7 +5,7 @@ AMI_ID="ami-0220d79f3f480ecf5"     # Amazon Linux 2
 INSTANCE_TYPE="t3.micro"
 SECURITY_GROUP_ID="sg-0d6a680fc44091364"
 SUBNET_ID="subnet-0a79d446f5450259c"
-TAG_NAME="Frontend"
+
 
 for instance in $@
 
@@ -16,7 +16,7 @@ INSTANCE_ID=$(aws ec2 run-instances \
     --instance-type $INSTANCE_TYPE \
     --security-group-ids $SECURITY_GROUP_ID \
     --subnet-id $SUBNET_ID \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$TAG_NAME}]" \
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$instance}]" \
     --query "Instances[0].InstanceId" \
     --output text)
 
