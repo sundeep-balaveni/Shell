@@ -31,7 +31,7 @@ aws ec2 wait instance-running --instance-ids $INSTANCE_ID --region $REGION
 echo "EC2 Instance $INSTANCE_ID is now running."
 
 
-if [$instance == "frontend"] ; then 
+if [ $instance = "frontend" ] ; then 
 
 #printing IP address 
 
@@ -55,7 +55,7 @@ PUBLIC_IP=$(aws ec2 describe-instances \
   --output text)
   echo " this is $instance   $PUBLIC_IP"
 
-  $RECORD_NAME="sndp.'$instance'.online"
+  $RECORD_NAME="sndp.$instance.online"
 
 fi
 
