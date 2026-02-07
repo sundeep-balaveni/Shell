@@ -5,7 +5,7 @@ AMI_ID="ami-0220d79f3f480ecf5"     # Amazon Linux 2
 INSTANCE_TYPE="t3.micro"
 SECURITY_GROUP_ID="sg-0d6a680fc44091364"
 SUBNET_ID="subnet-0a79d446f5450259c"
-HOSTED-ZONE-ID= "Z019184425TWL87B91K51"
+HOSTED_ZONE_ID= "Z019184425TWL87B91K51"
 
 
 for instance in $@
@@ -62,7 +62,7 @@ fi
 #updating the route 53 records 
 
 aws route53 change-resource-record-sets \
-  --hosted-zone-id  \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
   --change-batch '{
     "Comment": "Update A record",
     "Changes": [
