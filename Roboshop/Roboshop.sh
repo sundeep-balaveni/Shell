@@ -62,7 +62,7 @@ fi
 #updating the route 53 records 
 
 aws route53 change-resource-record-sets \
-  --hosted-zone-id "'$HOSTED_ZONE_ID'" \
+  --hosted-zone-id "$HOSTED_ZONE_ID" \
   --change-batch '{
     "Comment": "Update A record",
     "Changes": [
