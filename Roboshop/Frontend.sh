@@ -29,7 +29,8 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
 
-cp Roboshop/Frontend.conf /etc/nginx/nginx.conf
+sudo cp Frontend.conf /etc/nginx/nginx.conf
+
 
 
 systemctl restart nginx 
