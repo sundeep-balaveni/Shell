@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER_ID = $(id -u)
+USER_ID=$(id -u)
 
 mkdir -p $LOGS_FOLDER
 

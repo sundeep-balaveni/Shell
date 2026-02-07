@@ -83,3 +83,7 @@ aws route53 change-resource-record-sets \
   echo "record updated for $instance"
 
 done
+
+
+
+
