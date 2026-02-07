@@ -29,7 +29,8 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
 
-sudo cp Frontend.conf /etc/nginx/nginx.conf
+sudo cp /home/ec2-user/Shell/Roboshop/Frontend.conf /etc/nginx/nginx.conf
+
 
 
 
