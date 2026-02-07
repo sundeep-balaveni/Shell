@@ -5,7 +5,7 @@ USER_ID=$(id -u)
 mkdir -p $LOGS_FOLDER
 
 
-if [ $USER_ID  -eq 0]; then
+if [ $USER_ID -eq 0]; then
 
 cp Roboshop/Mongo.repo  /etc/yum.repos.d/mongo.repo 
 
