@@ -69,11 +69,11 @@ aws route53 change-resource-record-sets \
       {
         "Action": "UPSERT",
         "ResourceRecordSet": {
-          "Name": '$RECORD_NAME',
+          "Name": "'$RECORD_NAME'",
           "Type": "A",
           "TTL": 300,
           "ResourceRecords": [
-            { "Value": '$PUBLIC_IP' }
+            { "Value": "'$PUBLIC_IP'" }
           ]
         }
       }
