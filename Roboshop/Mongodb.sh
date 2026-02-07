@@ -30,6 +30,8 @@ else
 echo "insatlling failed"  | tee -a  $LOGS_FOLDER
 exit 1 
 
+fi
+
 
 
 fi 
