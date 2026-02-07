@@ -45,7 +45,7 @@ PUBLIC_IP=$(aws ec2 describe-instances \
 
   #updating the DNS records 
 
-  $RECORD_NAME="sndp.online"
+  RECORD_NAME="sndp.online"
 
 else 
 
@@ -55,7 +55,7 @@ PUBLIC_IP=$(aws ec2 describe-instances \
   --output text)
   echo " this is $instance   $PUBLIC_IP"
 
-  $RECORD_NAME="sndp.$instance.online"
+  RECORD_NAME="sndp.$instance.online"
 
 fi
 
