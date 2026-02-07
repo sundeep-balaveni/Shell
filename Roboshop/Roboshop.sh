@@ -55,7 +55,7 @@ PUBLIC_IP=$(aws ec2 describe-instances \
   --output text)
   echo " this is $instance   $PUBLIC_IP"
 
-  RECORD_NAME="sndp.$instance.online"
+  RECORD_NAME="$instance.sndp.online"
 
 fi
 
