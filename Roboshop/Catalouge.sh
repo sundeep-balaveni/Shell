@@ -25,7 +25,7 @@ curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue
 cd /app 
 unzip /tmp/catalogue.zip
 
-cd /app 
+
 npm install 
 
 sudo cp /home/ec2-user/Shell/Roboshop/Catalouge.config /etc/systemd/system/catalogue.service
