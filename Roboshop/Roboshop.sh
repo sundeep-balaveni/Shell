@@ -5,7 +5,7 @@ AMI_ID="ami-0220d79f3f480ecf5"     # Amazon Linux 2
 INSTANCE_TYPE="t3.micro"
 SECURITY_GROUP_ID="sg-0d6a680fc44091364"
 SUBNET_ID="subnet-0a79d446f5450259c"
-HOSTED_ZONE_ID= "Z019184425TWL87B91K51"
+HOSTED_ZONE_ID="Z019184425TWL87B91K51"
 
 
 for instance in $@
@@ -45,7 +45,7 @@ PUBLIC_IP=$(aws ec2 describe-instances \
 
   #updating the DNS records 
 
-  $RECORD_NAME = "sndp.online"
+  $RECORD_NAME="sndp.online"
 
 else 
 
@@ -55,7 +55,7 @@ PUBLIC_IP=$(aws ec2 describe-instances \
   --output text)
   echo " this is $instance   $PUBLIC_IP"
 
-  $RECORD_NAME = "sndp.'$instance'.online"
+  $RECORD_NAME="sndp.'$instance'.online"
 
 fi
 
