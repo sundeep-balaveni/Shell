@@ -29,7 +29,7 @@ unzip /tmp/catalogue.zip
 cd /app 
 npm install 
 
-cp Catalouge.config /etc/systemd/system/catalogue.service
+sudo cp /home/ec2-user/Shell/Roboshop/Catalouge.config /etc/systemd/system/catalogue.service
 
 systemctl daemon-reload
 
