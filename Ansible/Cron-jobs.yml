@@ -37,4 +37,5 @@
         name: "Disk utilization check"
         user: ec2-user
         minute: "*"
-        job: "/home/ec2-user/Disc_ustilization.sh >> /var/log/disk.log 2>&1"
+        job: "/bin/bash /home/ec2-user/Disc_ustilization.sh >> /var/log/disk.log 2>&1"
+
