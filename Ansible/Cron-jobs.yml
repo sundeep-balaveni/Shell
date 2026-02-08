@@ -21,6 +21,12 @@
         state: touch
         mode: "0644"
 
+    - name: Copy the script 
+      ansible.builtin.Copy:
+        src: /home/ec2-user/Shell/Roboshop/Disc_ustilization.sh
+        dest: /home/ec2-user/Disc_ustilization.sh
+        mode: "0755"
+
     - name: Schedule disk utilization cron job
       ansible.builtin.cron:
         name: "Disk utilization check"
