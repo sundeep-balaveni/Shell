@@ -14,4 +14,4 @@ else
 echo "Less than 80 %"
 fi
 
-echo "current disk usage : $DISK_UTILIZATION"
+echo "current disk usage : $DISK_UTILIZATION %"
