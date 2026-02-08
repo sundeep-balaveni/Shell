@@ -22,7 +22,7 @@
   - name: "Running cron job "
     ansible.builtin.cron:
     name: "Disk utilization"
-    minute: "*"
+    minute: "1"
     job: "/bin/bash /home/ec2-user/Shell/Roboshop/Disc_ustilization.sh >> /tmp/disk.log 2>&1"
 
 
