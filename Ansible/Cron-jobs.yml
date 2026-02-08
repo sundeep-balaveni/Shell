@@ -29,13 +29,11 @@
     - name: Remove old cron job
       ansible.builtin.cron:
         name: "Disk utilization check"
-        user: ec2-user
         state: absent
 
     - name: Add correct cron job
       ansible.builtin.cron:
         name: "Disk utilization check"
-        user: ec2-user
         minute: "*"
         job: "/bin/bash /home/ec2-user/Disc_ustilization.sh >> /var/log/disk.log 2>&1"
 
