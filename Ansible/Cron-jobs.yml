@@ -1,30 +1,28 @@
-- name: Disk usage
+- name: Disk usage cron setup
   hosts: web
   become: yes
 
   tasks:
-  - name: installing cron
-    ansible.builtin.package:
-    name: cronie
-    state: present
 
-  - name: enable the cron
-    ansible.builtin.service:
-    name: cronie
-    state: started
-    enable: yes
+    - name: Install cron package
+      ansible.builtin.package:
+        name: cronie
+        state: present
 
-  - name: creating a file
-    ansible.builtin.file:
-    path: /var/disk_logs
-    state: touch
+    - name: Enable and start cron service
+      ansible.builtin.service:
+        name: crond
+        state: started
+        enabled: yes
 
-  - name: "Running cron job "
-    ansible.builtin.cron:
-    name: "Disk utilization"
-    minute: "1"
-    job: "/bin/bash /home/ec2-user/Shell/Roboshop/Disc_ustilization.sh >> /tmp/disk.log 2>&1"
+    - name: Create disk log file in /var
+      ansible.builtin.file:
+        path: /var/log/disk.log
+        state: touch
+        mode: "0644"
 
-
-     
-
+    - name: Schedule disk utilization cron job
+      ansible.builtin.cron:
+        name: "Disk utilization check"
+        minute: "*"
+        job: "/bin/bash /home/ec2-user/Shell/Roboshop/Disc_ustilization.sh >> /var/log/disk.log 2>&1"
