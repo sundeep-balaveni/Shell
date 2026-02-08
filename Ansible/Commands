@@ -2,3 +2,6 @@ ansible frontend -i inventory.ini --list-hosts
 
 
 ansible-inventory -i inventory.ini --graph
+
+
+ansible all -i 172.31.29.249, -e ansible_user=ec2-user -e ansible_password=DevOps321 -b  -m service -a "name=nginx state=started"
