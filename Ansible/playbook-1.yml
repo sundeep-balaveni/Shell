@@ -7,3 +7,5 @@
     - name: print success message
       ansible.builtin.debug:
         msg: "ping successful"
+
+    
