@@ -14,5 +14,7 @@
         enabled: yes
 
     - name: print success message
+      ansible.builtin.debug:
+        msg: "nginx installation and startup successful"
 
 
