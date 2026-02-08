@@ -1,0 +1,4 @@
+ansible frontend -i inventory.ini --list-hosts
+
+
+ansible-inventory -i inventory.ini --graph
