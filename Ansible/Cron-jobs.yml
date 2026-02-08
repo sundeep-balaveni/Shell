@@ -1,4 +1,4 @@
-- name: Disk usage cron setup
+- name: Disk cron setup
   hosts: web
   become: yes
 
@@ -9,25 +9,30 @@
         name: cronie
         state: present
 
-    - name: Enable and start cron service
+    - name: Start cron service
       ansible.builtin.service:
         name: crond
         state: started
         enabled: yes
 
-    - name: Create disk log file in /var
-      ansible.builtin.file:
-        path: /var/log/disk.log
-        state: touch
-        mode: "0644"
-
-    - name: Copy the script 
+    - name: Copy disk script to slave
       ansible.builtin.copy:
         src: /home/ec2-user/Shell/Roboshop/Disc_ustilization.sh
         dest: /home/ec2-user/Disc_ustilization.sh
         mode: "0755"
 
-    - name: Schedule disk utilization cron job
+    - name: Create log file
+      ansible.builtin.file:
+        path: /var/log/disk.log
+        state: touch
+
+    - name: Remove old cron job
+      ansible.builtin.cron:
+        name: "Disk utilization check"
+        user: ec2-user
+        state: absent
+
+    - name: Add correct cron job
       ansible.builtin.cron:
         name: "Disk utilization check"
         user: ec2-user
