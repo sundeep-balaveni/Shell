@@ -1,6 +1,6 @@
 - name: install and run nginx
   hosts: web
-  become: yes
+  become: yes   ##become root user
   tasks:
     - name: install nginx
       ansible.builtin.package:
