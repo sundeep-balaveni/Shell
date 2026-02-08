@@ -22,7 +22,7 @@
         mode: "0644"
 
     - name: Copy the script 
-      ansible.builtin.Copy:
+      ansible.builtin.copy:
         src: /home/ec2-user/Shell/Roboshop/Disc_ustilization.sh
         dest: /home/ec2-user/Disc_ustilization.sh
         mode: "0755"
@@ -30,5 +30,6 @@
     - name: Schedule disk utilization cron job
       ansible.builtin.cron:
         name: "Disk utilization check"
+        user: ec2-user
         minute: "*"
         job: "/bin/bash /home/ec2-user/Disc_ustilization.sh >> /var/log/disk.log 2>&1"
