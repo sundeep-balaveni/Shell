@@ -97,7 +97,7 @@
 
     - name: Restart SSH to apply changes
       ansible.builtin.service:
-        name: sshd
+        name: ssh
         state: restarted
 
     - name: Create a user
