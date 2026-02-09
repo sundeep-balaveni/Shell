@@ -1,7 +1,7 @@
 - name: demo on conditions
   hosts: web
   vars:
-    IS_LIVE: false
+    IS_LIVE: true
   tasks:
   - name: check Live or not
     ansible.builtin.debug:
