@@ -56,11 +56,19 @@
 
   tasks:
 
-    - name: Set PasswordAuthentication to no
-      ansible.posix.sshd_config:
-        option: PasswordAuthentication
-        value: no
-        state: present
+  - name: Disable password authentication in SSH
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#?PasswordAuthentication'
+      line: 'PasswordAuthentication no'
+      state: present
+      backup: yes
+
+- name: Restart SSH to apply changes
+  ansible.builtin.service:
+    name: sshd
+    state: restarted
+
 
     - name: Restart SSH to apply changes
       ansible.builtin.service:
