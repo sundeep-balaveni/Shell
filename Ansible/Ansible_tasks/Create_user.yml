@@ -103,5 +103,5 @@
     - name: Create a user
       ansible.builtin.user:
         name: sandeep
-        groups: wheel
+        groups: sudo
         state: present
