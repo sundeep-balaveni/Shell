@@ -1,6 +1,5 @@
 - name: demo on conditions
   hosts: web
-  connection: web
   vars:
     IS_LIVE: false
   tasks:
