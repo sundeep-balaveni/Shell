@@ -1,82 +1,106 @@
-# - name: Create a user and copy a file
+# # - name: Create a user and copy a file
+# #   hosts: web
+# #   become: true
+
+# #   tasks:
+
+# #   - name: Set PasswordAuthentication to no
+# #   ansible.posix.sshd_config:
+# #     option: PasswordAuthentication
+# #     value: no
+# #     state: present
+# #   become: yes
+
+# #     # - name: Copy the file
+# #     #   ansible.builtin.copy:
+# #     #     src: /home/ec2-user/Shell/Ansible/inventory.ini
+# #     #     dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
+# #     #   register: src_out_put_file
+
+# #     # - name: Checking the destination
+# #     #   ansible.builtin.debug:
+# #     #     msg: "The source is copied successfully"
+# #     #   when: src_out_put_file is succeeded
+
+
+# #   # - name: Disable password authentication in SSH
+# #   # hosts: web
+# #   # become: yes
+# #   # tasks:
+# #   #   - name: Ensure PasswordAuthentication is disabled
+# #   #     ansible.builtin.lineinfile:
+# #   #       path: /etc/ssh/sshd_config
+# #   #       regexp: '^#?PasswordAuthentication'
+# #   #       line: 'PasswordAuthentication no'
+# #   #       state: present
+# #   #       backup: yes
+# #   #     become : yes
+  
+
+# #     - name: Restart SSH to apply changes
+# #       ansible.builtin.service:
+# #         name: sshd
+# #         state: restarted
+
+
+# #     - name: Create a user
+# #       ansible.builtin.user:
+# #         name: sandeep
+# #         groups: wheel
+# #         state: present
+
+
+# - name: Create a user and configure SSH
 #   hosts: web
 #   become: true
 
 #   tasks:
 
-#   - name: Set PasswordAuthentication to no
-#   ansible.posix.sshd_config:
-#     option: PasswordAuthentication
-#     value: no
+#   - name: Disable password authentication in SSH
+#   ansible.builtin.lineinfile:
+#     path: /etc/ssh/sshd_config
+#     regexp: '^#?PasswordAuthentication'
+#     line: 'PasswordAuthentication no'
 #     state: present
-#   become: yes
+#     backup: yes
 
-#     # - name: Copy the file
-#     #   ansible.builtin.copy:
-#     #     src: /home/ec2-user/Shell/Ansible/inventory.ini
-#     #     dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
-#     #   register: src_out_put_file
-
-#     # - name: Checking the destination
-#     #   ansible.builtin.debug:
-#     #     msg: "The source is copied successfully"
-#     #   when: src_out_put_file is succeeded
+# - name: Restart SSH to apply changes
+#   ansible.builtin.service:
+#     name: sshd
+#     state: restarted
 
 
-#   # - name: Disable password authentication in SSH
-#   # hosts: web
-#   # become: yes
-#   # tasks:
-#   #   - name: Ensure PasswordAuthentication is disabled
-#   #     ansible.builtin.lineinfile:
-#   #       path: /etc/ssh/sshd_config
-#   #       regexp: '^#?PasswordAuthentication'
-#   #       line: 'PasswordAuthentication no'
-#   #       state: present
-#   #       backup: yes
-#   #     become : yes
-  
+#     # - name: Restart SSH to apply changes
+#     #   ansible.builtin.service:
+#     #     name: sshd
+#     #     state: restarted
 
-#     - name: Restart SSH to apply changes
-#       ansible.builtin.service:
-#         name: sshd
-#         state: restarted
-
-
-#     - name: Create a user
-#       ansible.builtin.user:
-#         name: sandeep
-#         groups: wheel
-#         state: present
-
-
+# - name: Create a user
+#   ansible.builtin.user:
+#       name: sandeep
+#       groups: wheel
+#       state: present
 - name: Create a user and configure SSH
   hosts: web
   become: true
 
   tasks:
 
-- name: Disable password authentication in SSH
-  ansible.builtin.lineinfile:
-    path: /etc/ssh/sshd_config
-    regexp: '^#?PasswordAuthentication'
-    line: 'PasswordAuthentication no'
-    state: present
-    backup: yes
+    - name: Disable password authentication in SSH
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        state: present
+        backup: yes
 
-- name: Restart SSH to apply changes
-  ansible.builtin.service:
-    name: sshd
-    state: restarted
+    - name: Restart SSH to apply changes
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
 
-
-    # - name: Restart SSH to apply changes
-    #   ansible.builtin.service:
-    #     name: sshd
-    #     state: restarted
-
-- name: Create a user
-  ansible.builtin.user:
-      name: sandeep
-      groups: wheel
-      state: present
+    - name: Create a user
+      ansible.builtin.user:
+        name: sandeep
+        groups: wheel
+        state: present
