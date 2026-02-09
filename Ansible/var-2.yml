@@ -1,13 +1,16 @@
-- name: variables-preferance
-  hosts: web
-  vars: 
-    NAME: "This is from PLAY"
+# - name: variables-preferance
+#   hosts: web
+#   vars: 
+#     NAME: "This is from PLAY"
 
   # vars_prompt:
   #   - name: NAME
   #     prompt: please Enter the name
   #     private: false
 
+  var_files:
+    - name.yml
+    
 
   tasks:
   - name: print the name of variable

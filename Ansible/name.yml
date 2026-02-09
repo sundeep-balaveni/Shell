@@ -1,0 +1,4 @@
+- name: variables-preferance
+  hosts: web
+  vars: 
+    NAME: "This is from files
