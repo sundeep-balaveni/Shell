@@ -1,7 +1,6 @@
-- name: Create a user
-  host: web
-
-
+- name: Create a user and copy a file
+  hosts: web
+  become: true
 
   tasks:
     - name: Copy the file
@@ -10,12 +9,11 @@
         dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
       register: src_out_put_file
 
-    - name: checking the dest
+    - name: Checking the destination
       ansible.builtin.debug:
-        msg: "the source is copied succesfully"
-      when: src_out_put_file 
-               
-  tasks:
+        msg: "The source is copied successfully"
+      when: src_out_put_file is succeeded
+
     - name: Create a user
       ansible.builtin.user:
         name: sandeep
