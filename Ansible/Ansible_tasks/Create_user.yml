@@ -70,13 +70,13 @@
     state: restarted
 
 
-    - name: Restart SSH to apply changes
-      ansible.builtin.service:
-        name: sshd
-        state: restarted
+    # - name: Restart SSH to apply changes
+    #   ansible.builtin.service:
+    #     name: sshd
+    #     state: restarted
 
-    - name: Create a user
-      ansible.builtin.user:
-        name: sandeep
-        groups: wheel
-        state: present
+- name: Create a user
+  ansible.builtin.user:
+      name: sandeep
+      groups: wheel
+      state: present
