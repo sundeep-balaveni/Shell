@@ -1,0 +1,10 @@
+- name: Create a user
+  hosts: web
+
+
+  tasks:
+    - name: create a user
+      ansible.builtin.user:
+      name: sandeep
+      groups: wheel
+      state: present
