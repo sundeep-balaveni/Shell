@@ -3,16 +3,16 @@
   become: true
 
   tasks:
-    - name: Copy the file
-      ansible.builtin.copy:
-        src: /home/ec2-user/Shell/Ansible/inventory.ini
-        dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
-      register: src_out_put_file
+    # - name: Copy the file
+    #   ansible.builtin.copy:
+    #     src: /home/ec2-user/Shell/Ansible/inventory.ini
+    #     dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
+    #   register: src_out_put_file
 
-    - name: Checking the destination
-      ansible.builtin.debug:
-        msg: "The source is copied successfully"
-      when: src_out_put_file is succeeded
+    # - name: Checking the destination
+    #   ansible.builtin.debug:
+    #     msg: "The source is copied successfully"
+    #   when: src_out_put_file is succeeded
 
     - name: Create a user
       ansible.builtin.user:
