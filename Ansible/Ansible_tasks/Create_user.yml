@@ -81,7 +81,7 @@
 #       groups: wheel
 #       state: present
 - name: Create a user and configure SSH
-  hosts: web
+  hosts: ubuntu
   become: true
 
   tasks:
