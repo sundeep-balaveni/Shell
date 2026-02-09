@@ -1,0 +1,19 @@
+- name: variables-preferance
+  hosts: web
+  vars: 
+  NAME: "This is from PLAY"
+
+  vars_prompt:
+  name: NAME
+  prompt: please Enter the name
+  private: false
+
+
+  tasks:
+  ansible.builtin.debug:
+    msg: This is the {{ NAME }}
+
+
+
+
+
