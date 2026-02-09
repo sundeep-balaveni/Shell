@@ -1,0 +1,13 @@
+- name: insatlling packages
+  hosts: web
+  become: true
+
+  tasks:
+    -name: insatlling the packages
+    ansible.builtin.package:
+      name: {{ item }}
+      state: present
+      loop:
+      - mysql
+      - nginx
+      - zip
