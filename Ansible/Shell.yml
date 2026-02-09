@@ -1,0 +1,14 @@
+- name: Shell vs ansible command
+  hosts: web
+  tasks:
+    name: printing the users 
+    ansible.builtin.shell:
+      cat /etc/passwd | grep root
+    register : users_output
+
+
+    name: printing the users_output
+    ansible.builtin.debug:
+      msg: "{{users_output}}""
+
+
