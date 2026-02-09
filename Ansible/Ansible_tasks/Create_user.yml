@@ -1,10 +1,9 @@
 - name: Create a user
   hosts: web
 
-
   tasks:
-    - name: create a user
+    - name: Create a user
       ansible.builtin.user:
-      name: sandeep
-      groups: wheel
-      state: present
+        name: sandeep
+        groups: wheel
+        state: present
