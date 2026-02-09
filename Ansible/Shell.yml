@@ -9,6 +9,6 @@
 
     name: printing the users_output
     ansible.builtin.debug:
-      msg: "{{users_output}}""
+      msg: "{{users_output}}"
 
 
