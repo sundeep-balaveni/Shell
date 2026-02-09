@@ -8,11 +8,12 @@
       ansible.builtin.copy:
         src: /home/ec2-user/Shell/Ansible/inventory.ini
         dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
+      register: src_out_put_file
 
     - name: checking the dest
       ansible.builtin.debug:
         msg: "the source is copied succesfully"
-      when: dest == "/home/ec2-user/Shell/Ansible/Ansible_tasks"
+      when: src_out_put_file 
                
   tasks:
     - name: Create a user
