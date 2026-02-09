@@ -22,7 +22,6 @@
 # #     #     msg: "The source is copied successfully"
 # #     #   when: src_out_put_file is succeeded
 
-
 # #   # - name: Disable password authentication in SSH
 # #   # hosts: web
 # #   # become: yes
@@ -35,20 +34,17 @@
 # #   #       state: present
 # #   #       backup: yes
 # #   #     become : yes
-  
 
 # #     - name: Restart SSH to apply changes
 # #       ansible.builtin.service:
 # #         name: sshd
 # #         state: restarted
 
-
 # #     - name: Create a user
 # #       ansible.builtin.user:
 # #         name: sandeep
 # #         groups: wheel
 # #         state: present
-
 
 # - name: Create a user and configure SSH
 #   hosts: web
@@ -69,7 +65,6 @@
 #     name: sshd
 #     state: restarted
 
-
 #     # - name: Restart SSH to apply changes
 #     #   ansible.builtin.service:
 #     #     name: sshd
@@ -86,22 +81,37 @@
 
   tasks:
 
-    - name: Disable password authentication in SSH
-      ansible.builtin.lineinfile:
-        path: /etc/ssh/sshd_config
-        regexp: '^#?PasswordAuthentication'
-        line: 'PasswordAuthentication no'
-        state: present
-        backup: yes
-        
+  - name: Disable password authentication in SSH
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#?PasswordAuthentication'
+      line: 'PasswordAuthentication no'
+      state: present
+      backup: yes
 
-    - name: Restart SSH to apply changes
-      ansible.builtin.service:
-        name: ssh
-        state: restarted
+  - name: Restart SSH to apply changes
+    ansible.builtin.service:
+      name: ssh
+      state: restarted
 
-    - name: Create a user
-      ansible.builtin.user:
-        name: sandeep
-        groups: sudo
-        state: present
+  - name: Create a user
+    ansible.builtin.user:
+      name: sandeep
+      groups: sudo
+      state: present
+
+  - name: Create .ssh directory for sandeep
+    ansible.builtin.file:
+      path: /home/sandeep/.ssh
+      state: directory
+      owner: sandeep
+      group: sandeep
+      mode: '0700'
+
+  - name: Add SSH public key for sandeep
+    ansible.builtin.copy:
+      content: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      dest: /home/sandeep/.ssh/authorized_keys
+      owner: sandeep
+      group: sandeep
+      mode: '0600'
