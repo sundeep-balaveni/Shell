@@ -1,6 +1,19 @@
 - name: Create a user
   hosts: web
 
+
+
+  tasks:
+    - name: Copy the file
+      ansible.builtin.copy:
+        src: /home/ec2-user/Shell/Ansible/inventory.ini
+        dest: /home/ec2-user/Shell/Ansible/Ansible_tasks
+
+    - name: checking the dest
+      ansible.builtin.debug:
+        msg: "the source is copied succesfully"
+      when: dest == "/home/ec2-user/Shell/Ansible/Ansible_tasks"
+               
   tasks:
     - name: Create a user
       ansible.builtin.user:
