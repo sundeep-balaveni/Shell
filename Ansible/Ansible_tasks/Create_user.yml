@@ -14,6 +14,25 @@
     #     msg: "The source is copied successfully"
     #   when: src_out_put_file is succeeded
 
+
+  - name: Disable password authentication in SSH
+  hosts: web
+  become: yes
+  tasks:
+    - name: Ensure PasswordAuthentication is disabled
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        state: present
+        backup: yes
+
+    - name: Restart SSH to apply changes
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
+
+
     - name: Create a user
       ansible.builtin.user:
         name: sandeep
