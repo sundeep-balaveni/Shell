@@ -1,7 +1,7 @@
-# - name: variables-preferance
-#   hosts: web
-#   vars: 
-#     NAME: "This is from PLAY"
+- name: variables-preferance
+  hosts: web
+  # vars: 
+  #   NAME: "This is from PLAY"
 
   # vars_prompt:
   #   - name: NAME
