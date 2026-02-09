@@ -12,7 +12,7 @@
     - name: checking the dest
       ansible.builtin.debug:
         msg: "the source is copied succesfully"
-      when: dest == "/home/ec2-user/Shell/Ansible/Ansible_tasks"
+      when: zzdest == "/home/ec2-user/Shell/Ansible/Ansible_tasks"
                
   tasks:
     - name: Create a user
