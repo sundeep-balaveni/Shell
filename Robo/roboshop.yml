@@ -62,7 +62,7 @@
         record: "roboshop-{{ env }}.{{ domain_name }}"   #item.item --> mongo , catalougr 
         type: A
         ttl: 2
-        value: "{{item.instances[0].private_ip_address}}"
+        value: "{{item.instances[0].public_ip_address}}"
         wait: true 
       
       loop: "{{ec2_output}}"
