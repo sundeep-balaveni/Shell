@@ -4,7 +4,7 @@
 
 
   tasks:
-    - naame :  verifyig it is working 
+    - name :  verifyig it is working 
       ansible.builtin.debug:
         msg : "Local host is working "
       
