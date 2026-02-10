@@ -2,12 +2,11 @@
   hosts: mongodb
   connection: local
 
-
   tasks:
-    - name:  getting the git package
+    - name: getting the git package
       src: mongo.repo
-      dest:  /etc/yum.repos.d/mongo.repo
-      
+      dest: /etc/yum.repos.d/mongo.repo
+
     - name: install mongo-db
       ansible.builtin.dnf:
         name: mongodb-org
@@ -15,15 +14,12 @@
 
     - name: configuring the ip public_ip_address
       ansible.builtin.replace:
-      path: '/etc/mongod.conf'
-      regexp: 127.0.0.1
-      replace: 0.0.0.0
-  
+        path: /etc/mongod.conf
+        regexp: 127.0.0.1
+        replace: 0.0.0.0
 
     - name: enabling the mongo-db
       ansible.builtin.service:
         name: mongod
         state: started
         enabled: yes
-
-
