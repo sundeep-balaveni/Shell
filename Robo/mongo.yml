@@ -1,6 +1,7 @@
 - name: installing Mongodb
   hosts: mongodb
   connection: local
+  become : yes
 
   tasks:
     - name: getting the git package
