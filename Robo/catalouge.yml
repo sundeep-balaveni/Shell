@@ -35,11 +35,11 @@
     - name: Download foo.conf
       ansible.builtin.get_url:
         url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-        dest: /app
+        dest: /tmp/catalogue-v3.zip 
 
     - name: unarchieve catalogue
       ansible.builtin.unarchive:
-        src: /app
+        src: /tmp/catalogue-v3.zip 
         dest: /app
         remote_src: yes
 
