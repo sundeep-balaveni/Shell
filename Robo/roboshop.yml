@@ -59,7 +59,7 @@
       amazon.aws.route53:
         state: present
         zone: "{{domain}}"
-        record: "roboshop-{{ env }}.{{ domain_name }}"   #item.item --> mongo , catalougr 
+        record: "roboshop-{{ env }}.{{ domain }}"   #item.item --> mongo , catalougr 
         type: A
         ttl: 2
         value: "{{item.instances[0].public_ip_address}}"
