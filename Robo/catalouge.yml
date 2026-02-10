@@ -1,0 +1,46 @@
+- name: installing catalouge
+  hosts: catalouge
+  connection: local
+  become: yes
+
+
+  tasks:
+    - name: disabling the defalut nodejs
+      ansible.builtin.command: dnf module disable nodejs -y
+
+    - name: disabling the defalut nodejs
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+
+
+    - name: installing node-js
+      ansible.builtin.dnf:
+        name: nodejs
+        state: present
+
+    - name: Creating the system user
+      ansible.builtin.user:
+        name: sandeep
+        system: yes
+        home: /app
+        shell : /sbin/nologin    #expictly prevents user to login 
+        comment : "System user"
+
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: /app
+        state: directory
+        
+
+    - name: Download foo.conf
+      ansible.builtin.get_url:
+        url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
+        dest: /app
+
+    - name: unarchieve catalogue
+      ansible.builtin.unarchive:
+        src: /app
+        dest: /app
+        remote_src: yes
+
+    
