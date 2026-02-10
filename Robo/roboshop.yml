@@ -3,12 +3,12 @@
   connection: local
 
   vars:
-    region: ap-south-1
+    region: us-east-1
     ami_id: ami-0b6c6ebed2801a5cb   # Ubuntu AMI (change this!)
     instance_type: t3.micro
     key_name: ubuntu-key
     security_group: sg-0eae84a28840ffd0c
-    subnet_id: subnet-07377eb5292181a05
+    subnet_id: subnet-0966e58e0745048a2
     env: dev
     instances:
       - mongo
