@@ -46,7 +46,7 @@
       amazon.aws.route53:
         state: present
         zone: "{{domain}}"
-        record: "{{item.item}}-{{env}}{{domain}}"
+        record: "{{item.item}}-{{env}}.{{domain}}"
         type: A
         ttl: 2
         value: "{{item.instances[0].private_ip_address}}"
