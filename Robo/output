@@ -1,0 +1,579 @@
+[localhost] => {
+    "msg": {
+        "changed": true,
+        "msg": "All items completed",
+        "results": [
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "failed": false,
+                "instance_ids": [
+                    "i-03f9fff0751ab8e0e"
+                ],
+                "instances": [
+                    {
+                        "ami_launch_index": 0,
+                        "architecture": "x86_64",
+                        "block_device_mappings": [
+                            {
+                                "device_name": "/dev/sda1",
+                                "ebs": {
+                                    "attach_time": "2026-02-10T06:56:11+00:00",
+                                    "delete_on_termination": true,
+                                    "ebs_card_index": 0,
+                                    "status": "attaching",
+                                    "volume_id": "vol-072bc01e620c55552"
+                                }
+                            }
+                        ],
+                        "boot_mode": "uefi-preferred",
+                        "capacity_reservation_specification": {
+                            "capacity_reservation_preference": "open"
+                        },
+                        "client_token": "1f03906ecbe0457cb0db1d33703dae15",
+                        "cpu_options": {
+                            "core_count": 1,
+                            "threads_per_core": 2
+                        },
+                        "current_instance_boot_mode": "uefi",
+                        "ebs_optimized": false,
+                        "ena_support": true,
+                        "enclave_options": {
+                            "enabled": false
+                        },
+                        "hibernation_options": {
+                            "configured": false
+                        },
+                        "hypervisor": "xen",
+                        "image_id": "ami-0b6c6ebed2801a5cb",
+                        "instance_id": "i-03f9fff0751ab8e0e",
+                        "instance_type": "t3.micro",
+                        "key_name": "ubuntu-key",
+                        "launch_time": "2026-02-10T06:56:10+00:00",
+                        "maintenance_options": {
+                            "auto_recovery": "default",
+                            "reboot_migration": "default"
+                        },
+                        "metadata_options": {
+                            "http_endpoint": "enabled",
+                            "http_protocol_ipv6": "disabled",
+                            "http_put_response_hop_limit": 2,
+                            "http_tokens": "required",
+                            "instance_metadata_tags": "disabled",
+                            "state": "pending"
+                        },
+                        "monitoring": {
+                            "state": "disabled"
+                        },
+                        "network_interfaces": [
+                            {
+                                "attachment": {
+                                    "attach_time": "2026-02-10T06:56:10+00:00",
+                                    "attachment_id": "eni-attach-009332fa95f87df9d",
+                                    "delete_on_termination": true,
+                                    "device_index": 0,
+                                    "network_card_index": 0,
+                                    "status": "attaching"
+                                },
+                                "description": "",
+                                "groups": [
+                                    {
+                                        "group_id": "sg-0eae84a28840ffd0c",
+                                        "group_name": "launch-wizard-24"
+                                    }
+                                ],
+                                "interface_type": "interface",
+                                "ipv6_addresses": [],
+                                "mac_address": "02:d3:4a:b0:71:79",
+                                "network_interface_id": "eni-0753e874c5bba4c2a",
+                                "operator": {
+                                    "managed": false
+                                },
+                                "owner_id": "443112456400",
+                                "private_dns_name": "ip-172-31-96-110.ec2.internal",
+                                "private_ip_address": "172.31.96.110",
+                                "private_ip_addresses": [
+                                    {
+                                        "primary": true,
+                                        "private_dns_name": "ip-172-31-96-110.ec2.internal",
+                                        "private_ip_address": "172.31.96.110"
+                                    }
+                                ],
+                                "source_dest_check": true,
+                                "status": "in-use",
+                                "subnet_id": "subnet-0966e58e0745048a2",
+                                "vpc_id": "vpc-068309230d32d3092"
+                            }
+                        ],
+                        "network_performance_options": {
+                            "bandwidth_weighting": "default"
+                        },
+                        "operator": {
+                            "managed": false
+                        },
+                        "placement": {
+                            "availability_zone": "us-east-1a",
+                            "availability_zone_id": "use1-az1",
+                            "group_name": "",
+                            "tenancy": "default"
+                        },
+                        "platform_details": "Linux/UNIX",
+                        "private_dns_name": "ip-172-31-96-110.ec2.internal",
+                        "private_dns_name_options": {
+                            "enable_resource_name_dns_a_record": false,
+                            "enable_resource_name_dns_aaaa_record": false,
+                            "hostname_type": "ip-name"
+                        },
+                        "private_ip_address": "172.31.96.110",
+                        "product_codes": [],
+                        "public_dns_name": "",
+                        "root_device_name": "/dev/sda1",
+                        "root_device_type": "ebs",
+                        "security_groups": [
+                            {
+                                "group_id": "sg-0eae84a28840ffd0c",
+                                "group_name": "launch-wizard-24"
+                            }
+                        ],
+                        "source_dest_check": true,
+                        "state": {
+                            "code": 0,
+                            "name": "pending"
+                        },
+                        "state_transition_reason": "",
+                        "subnet_id": "subnet-0966e58e0745048a2",
+                        "tags": {
+                            "Env": "dev",
+                            "Name": "mongo-dev",
+                            "Project": "Roboshop",
+                            "name": "mongo-dev"
+                        },
+                        "usage_operation": "RunInstances",
+                        "usage_operation_update_time": "2026-02-10T06:56:10+00:00",
+                        "virtualization_type": "hvm",
+                        "vpc_id": "vpc-068309230d32d3092"
+                    }
+                ],
+                "invocation": {
+                    "module_args": {
+                        "aap_callback": null,
+                        "access_key": null,
+                        "availability_zone": null,
+                        "aws_ca_bundle": "/etc/pki/tls/certs/ca-bundle.crt",
+                        "aws_config": null,
+                        "count": null,
+                        "cpu_credit_specification": null,
+                        "cpu_options": null,
+                        "debug_botocore_endpoint_logs": false,
+                        "detailed_monitoring": null,
+                        "ebs_optimized": null,
+                        "endpoint_url": null,
+                        "exact_count": null,
+                        "filters": {
+                            "image-id": [
+                                "ami-0b6c6ebed2801a5cb"
+                            ],
+                            "instance-state-name": [
+                                "pending",
+                                "running",
+                                "stopping",
+                                "stopped"
+                            ],
+                            "subnet-id": [
+                                "subnet-0966e58e0745048a2"
+                            ],
+                            "tag:Name": [
+                                "mongo-dev"
+                            ]
+                        },
+                        "hibernation_options": false,
+                        "iam_instance_profile": null,
+                        "image": null,
+                        "image_id": "ami-0b6c6ebed2801a5cb",
+                        "instance_ids": [],
+                        "instance_initiated_shutdown_behavior": null,
+                        "instance_type": "t3.micro",
+                        "key_name": "ubuntu-key",
+                        "launch_template": null,
+                        "metadata_options": null,
+                        "name": "mongo-dev",
+                        "network": null,
+                        "placement_group": null,
+                        "profile": null,
+                        "purge_tags": true,
+                        "region": "us-east-1",
+                        "secret_key": null,
+                        "security_group": "sg-0eae84a28840ffd0c",
+                        "security_groups": [],
+                        "session_token": null,
+                        "state": "present",
+                        "subnet_id": "subnet-0966e58e0745048a2",
+                        "tags": {
+                            "Env": "dev",
+                            "Name": "mongo-dev",
+                            "Project": "Roboshop",
+                            "name": "mongo-dev"
+                        },
+                        "tenancy": null,
+                        "termination_protection": null,
+                        "user_data": null,
+                        "validate_certs": true,
+                        "volumes": null,
+                        "vpc_subnet_id": "subnet-0966e58e0745048a2",
+                        "wait": true,
+                        "wait_timeout": 600
+                    }
+                },
+                "item": "mongo",
+                "spec": {
+                    "BlockDeviceMappings": [],
+                    "ClientToken": "1f03906ecbe0457cb0db1d33703dae15",
+                    "ImageId": "ami-0b6c6ebed2801a5cb",
+                    "InstanceType": "t3.micro",
+                    "KeyName": "ubuntu-key",
+                    "MaxCount": 1,
+                    "MinCount": 1,
+                    "NetworkInterfaces": [
+                        {
+                            "DeviceIndex": 0,
+                            "Groups": [
+                                "sg-0eae84a28840ffd0c"
+                            ],
+                            "SubnetId": "subnet-0966e58e0745048a2"
+                        }
+                    ],
+                    "TagSpecifications": [
+                        {
+                            "ResourceType": "volume",
+                            "Tags": [
+                                {
+                                    "Key": "Project",
+                                    "Value": "Roboshop"
+                                },
+                                {
+                                    "Key": "Env",
+                                    "Value": "dev"
+                                },
+                                {
+                                    "Key": "name",
+                                    "Value": "mongo-dev"
+                                },
+                                {
+                                    "Key": "Name",
+                                    "Value": "mongo-dev"
+                                }
+                            ]
+                        },
+                        {
+                            "ResourceType": "instance",
+                            "Tags": [
+                                {
+                                    "Key": "Project",
+                                    "Value": "Roboshop"
+                                },
+                                {
+                                    "Key": "Env",
+                                    "Value": "dev"
+                                },
+                                {
+                                    "Key": "name",
+                                    "Value": "mongo-dev"
+                                },
+                                {
+                                    "Key": "Name",
+                                    "Value": "mongo-dev"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "ansible_loop_var": "item",
+                "changed": true,
+                "failed": false,
+                "instance_ids": [
+                    "i-0c558495340423df0"
+                ],
+                "instances": [
+                    {
+                        "ami_launch_index": 0,
+                        "architecture": "x86_64",
+                        "block_device_mappings": [
+                            {
+                                "device_name": "/dev/sda1",
+                                "ebs": {
+                                    "attach_time": "2026-02-10T06:56:15+00:00",
+                                    "delete_on_termination": true,
+                                    "ebs_card_index": 0,
+                                    "status": "attaching",
+                                    "volume_id": "vol-04e5d3f7901d82d14"
+                                }
+                            }
+                        ],
+                        "boot_mode": "uefi-preferred",
+                        "capacity_reservation_specification": {
+                            "capacity_reservation_preference": "open"
+                        },
+                        "client_token": "94d37dfa457c4136b7417ef3fae6b461",
+                        "cpu_options": {
+                            "core_count": 1,
+                            "threads_per_core": 2
+                        },
+                        "current_instance_boot_mode": "uefi",
+                        "ebs_optimized": false,
+                        "ena_support": true,
+                        "enclave_options": {
+                            "enabled": false
+                        },
+                        "hibernation_options": {
+                            "configured": false
+                        },
+                        "hypervisor": "xen",
+                        "image_id": "ami-0b6c6ebed2801a5cb",
+                        "instance_id": "i-0c558495340423df0",
+                        "instance_type": "t3.micro",
+                        "key_name": "ubuntu-key",
+                        "launch_time": "2026-02-10T06:56:14+00:00",
+                        "maintenance_options": {
+                            "auto_recovery": "default",
+                            "reboot_migration": "default"
+                        },
+                        "metadata_options": {
+                            "http_endpoint": "enabled",
+                            "http_protocol_ipv6": "disabled",
+                            "http_put_response_hop_limit": 2,
+                            "http_tokens": "required",
+                            "instance_metadata_tags": "disabled",
+                            "state": "pending"
+                        },
+                        "monitoring": {
+                            "state": "disabled"
+                        },
+                        "network_interfaces": [
+                            {
+                                "attachment": {
+                                    "attach_time": "2026-02-10T06:56:14+00:00",
+                                    "attachment_id": "eni-attach-0b498a31bfcbc12d9",
+                                    "delete_on_termination": true,
+                                    "device_index": 0,
+                                    "network_card_index": 0,
+                                    "status": "attaching"
+                                },
+                                "description": "",
+                                "groups": [
+                                    {
+                                        "group_id": "sg-0eae84a28840ffd0c",
+                                        "group_name": "launch-wizard-24"
+                                    }
+                                ],
+                                "interface_type": "interface",
+                                "ipv6_addresses": [],
+                                "mac_address": "02:9f:5f:25:11:71",
+                                "network_interface_id": "eni-0057d9cdabfa6959c",
+                                "operator": {
+                                    "managed": false
+                                },
+                                "owner_id": "443112456400",
+                                "private_dns_name": "ip-172-31-96-93.ec2.internal",
+                                "private_ip_address": "172.31.96.93",
+                                "private_ip_addresses": [
+                                    {
+                                        "primary": true,
+                                        "private_dns_name": "ip-172-31-96-93.ec2.internal",
+                                        "private_ip_address": "172.31.96.93"
+                                    }
+                                ],
+                                "source_dest_check": true,
+                                "status": "in-use",
+                                "subnet_id": "subnet-0966e58e0745048a2",
+                                "vpc_id": "vpc-068309230d32d3092"
+                            }
+                        ],
+                        "network_performance_options": {
+                            "bandwidth_weighting": "default"
+                        },
+                        "operator": {
+                            "managed": false
+                        },
+                        "placement": {
+                            "availability_zone": "us-east-1a",
+                            "availability_zone_id": "use1-az1",
+                            "group_name": "",
+                            "tenancy": "default"
+                        },
+                        "platform_details": "Linux/UNIX",
+                        "private_dns_name": "ip-172-31-96-93.ec2.internal",
+                        "private_dns_name_options": {
+                            "enable_resource_name_dns_a_record": false,
+                            "enable_resource_name_dns_aaaa_record": false,
+                            "hostname_type": "ip-name"
+                        },
+                        "private_ip_address": "172.31.96.93",
+                        "product_codes": [],
+                        "public_dns_name": "",
+                        "root_device_name": "/dev/sda1",
+                        "root_device_type": "ebs",
+                        "security_groups": [
+                            {
+                                "group_id": "sg-0eae84a28840ffd0c",
+                                "group_name": "launch-wizard-24"
+                            }
+                        ],
+                        "source_dest_check": true,
+                        "state": {
+                            "code": 0,
+                            "name": "pending"
+                        },
+                        "state_transition_reason": "",
+                        "subnet_id": "subnet-0966e58e0745048a2",
+                        "tags": {
+                            "Env": "dev",
+                            "Name": "catalouge-dev",
+                            "Project": "Roboshop",
+                            "name": "catalouge-dev"
+                        },
+                        "usage_operation": "RunInstances",
+                        "usage_operation_update_time": "2026-02-10T06:56:14+00:00",
+                        "virtualization_type": "hvm",
+                        "vpc_id": "vpc-068309230d32d3092"
+                    }
+                ],
+                "invocation": {
+                    "module_args": {
+                        "aap_callback": null,
+                        "access_key": null,
+                        "availability_zone": null,
+                        "aws_ca_bundle": "/etc/pki/tls/certs/ca-bundle.crt",
+                        "aws_config": null,
+                        "count": null,
+                        "cpu_credit_specification": null,
+                        "cpu_options": null,
+                        "debug_botocore_endpoint_logs": false,
+                        "detailed_monitoring": null,
+                        "ebs_optimized": null,
+                        "endpoint_url": null,
+                        "exact_count": null,
+                        "filters": {
+                            "image-id": [
+                                "ami-0b6c6ebed2801a5cb"
+                            ],
+                            "instance-state-name": [
+                                "pending",
+                                "running",
+                                "stopping",
+                                "stopped"
+                            ],
+                            "subnet-id": [
+                                "subnet-0966e58e0745048a2"
+                            ],
+                            "tag:Name": [
+                                "catalouge-dev"
+                            ]
+                        },
+                        "hibernation_options": false,
+                        "iam_instance_profile": null,
+                        "image": null,
+                        "image_id": "ami-0b6c6ebed2801a5cb",
+                        "instance_ids": [],
+                        "instance_initiated_shutdown_behavior": null,
+                        "instance_type": "t3.micro",
+                        "key_name": "ubuntu-key",
+                        "launch_template": null,
+                        "metadata_options": null,
+                        "name": "catalouge-dev",
+                        "network": null,
+                        "placement_group": null,
+                        "profile": null,
+                        "purge_tags": true,
+                        "region": "us-east-1",
+                        "secret_key": null,
+                        "security_group": "sg-0eae84a28840ffd0c",
+                        "security_groups": [],
+                        "session_token": null,
+                        "state": "present",
+                        "subnet_id": "subnet-0966e58e0745048a2",
+                        "tags": {
+                            "Env": "dev",
+                            "Name": "catalouge-dev",
+                            "Project": "Roboshop",
+                            "name": "catalouge-dev"
+                        },
+                        "tenancy": null,
+                        "termination_protection": null,
+                        "user_data": null,
+                        "validate_certs": true,
+                        "volumes": null,
+                        "vpc_subnet_id": "subnet-0966e58e0745048a2",
+                        "wait": true,
+                        "wait_timeout": 600
+                    }
+                },
+                "item": "catalouge",
+                "spec": {
+                    "BlockDeviceMappings": [],
+                    "ClientToken": "94d37dfa457c4136b7417ef3fae6b461",
+                    "ImageId": "ami-0b6c6ebed2801a5cb",
+                    "InstanceType": "t3.micro",
+                    "KeyName": "ubuntu-key",
+                    "MaxCount": 1,
+                    "MinCount": 1,
+                    "NetworkInterfaces": [
+                        {
+                            "DeviceIndex": 0,
+                            "Groups": [
+                                "sg-0eae84a28840ffd0c"
+                            ],
+                            "SubnetId": "subnet-0966e58e0745048a2"
+                        }
+                    ],
+                    "TagSpecifications": [
+                        {
+                            "ResourceType": "volume",
+                            "Tags": [
+                                {
+                                    "Key": "Project",
+                                    "Value": "Roboshop"
+                                },
+                                {
+                                    "Key": "Env",
+                                    "Value": "dev"
+                                },
+                                {
+                                    "Key": "name",
+                                    "Value": "catalouge-dev"
+                                },
+                                {
+                                    "Key": "Name",
+                                    "Value": "catalouge-dev"
+                                }
+                            ]
+                        },
+                        {
+                            "ResourceType": "instance",
+                            "Tags": [
+                                {
+                                    "Key": "Project",
+                                    "Value": "Roboshop"
+                                },
+                                {
+                                    "Key": "Env",
+                                    "Value": "dev"
+                                },
+                                {
+                                    "Key": "name",
+                                    "Value": "catalouge-dev"
+                                },
+                                {
+                                    "Key": "Name",
+                                    "Value": "catalouge-dev"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "skipped": false
+    }
+}

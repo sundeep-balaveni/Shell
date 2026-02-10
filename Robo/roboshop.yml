@@ -9,6 +9,7 @@
     key_name: ubuntu-key
     security_group: sg-0eae84a28840ffd0c
     subnet_id: subnet-0966e58e0745048a2
+    domain : sndp.online
     env: dev
     instances:
       - mongo
@@ -38,6 +39,36 @@
     - name: printing the ec2 output
       ansible.builtin.debug:
         msg: "{{ec2_output}}"
+
+
+    - name: creating route 53 record 
+      amazon.aws.route53:
+        state: present
+        zone: "{{domain}}"
+        record: "{{item.item}}-{{doamin}}-{{env}}"
+        type: A
+        ttl: 2
+        value: "{{item.instances[0].private_ip_address}}"
+        wait: true 
+      
+      loop: "{{ec2_output}}"
+
+
+    - name: creating route 53 record 
+      amazon.aws.route53:
+        state: present
+        zone: "{{domain}}"
+        record: "roboshop-{{ env }}.{{ domain_name }}"   #item.item --> mongo , catalougr 
+        type: A
+        ttl: 2
+        value: "{{item.instances[0].private_ip_address}}"
+        wait: true 
+      
+      loop: "{{ec2_output}}"
+
+      when:
+        - item.item == "frontend"
+      
 
 
 
