@@ -1,0 +1,10 @@
+- name: creating ec2-user and update route-53
+  hosts: all
+  become: local
+
+
+  tasks:
+    - naame :  verifyig it is working 
+      ansible.builtin.debug:
+        msg : "Local host is working "
+      
