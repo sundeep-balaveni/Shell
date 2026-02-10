@@ -1,6 +1,5 @@
 - name: installing catalouge
   hosts: catalouge
-  connection: local
   become: yes
 
 

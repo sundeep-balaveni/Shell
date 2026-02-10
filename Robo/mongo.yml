@@ -1,6 +1,5 @@
 - name: installing Mongodb
   hosts: mongodb
-  connection: local
   become : yes
 
   tasks:
