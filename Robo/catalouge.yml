@@ -56,7 +56,7 @@
 
     - name: Copy the systemd service file
       ansible.builtin.copy:
-        src: catalogue.service          # file on control node
+        src: catalouge.service          # file on control node
         dest: /etc/systemd/system/catalogue.service
         owner: root
   
