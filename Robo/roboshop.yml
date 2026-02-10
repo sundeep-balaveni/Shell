@@ -52,8 +52,9 @@
         type: A
         ttl: 2
         value: "{{item.instances[0].private_ip_address}}"
-        wait: true 
         overwrite: true
+        wait: true 
+        
       
       loop: "{{ec2_output.results}}"
 
@@ -66,8 +67,9 @@
         type: A
         ttl: 2
         value: "{{item.instances[0].public_ip_address}}"
-        wait: true 
         overwrite: true
+        wait: true 
+        
       
       loop: "{{ec2_output.results}}"
 
