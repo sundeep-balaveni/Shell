@@ -1,6 +1,6 @@
 - name: creating ec2-user and update route-53
-  hosts: all
-  become: local
+  hosts: local
+  connection: local
 
 
   tasks:
