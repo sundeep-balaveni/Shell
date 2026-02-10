@@ -54,10 +54,12 @@
         path: /etc/systemd/system
         state: file
 
-    - name: copying the service module 
+    - name: Copy the systemd service file
       ansible.builtin.copy:
-        remote_src : catalogue.service
-        dest: /etc/systemd/system/catalouge.service
+        src: catalogue.service          # file on control node
+        dest: /etc/systemd/system/catalogue.service
+        owner: root
+  
 
     
 
