@@ -2,9 +2,45 @@
   hosts: local
   connection: local
 
+  vars:
+    region: ap-south-1
+    ami_id: ami-0b6c6ebed2801a5cb   # Ubuntu AMI (change this!)
+    instance_type: t3.micro
+    key_name: ubuntu-key
+    security_group: sg-0eae84a28840ffd0c
+    subnet_id: subnet-07377eb5292181a05
+    env: dev
+    instances:
+      - mongo
+      - catalouge
 
   tasks:
-    - name :  verifyig it is working 
-      ansible.builtin.debug:
-        msg : "Local host is working "
+    - name: Create EC2 instance
+      amazon.aws.ec2_instance:
+        name: "ansible-ec2"
+        key_name: "{{ key_name }}"
+        instance_type: "{{ instance_type }}"
+        image_id: "{{ ami_id }}"
+        wait: yes
+        region: "{{ region }}"
+        security_group: "{{ security_group }}"
+        subnet_id: "{{ subnet_id }}"
+        name: "{{item}}-{{env}}"
+        tags:
+          Project : Roboshop
+          Env: dev
+          name: "{{item}}-{{env}}"
       
+      loop : "{{instances}}"
+      register:  ec2_output
+
+
+    - name: printing the ec2 output
+      ansible.builtin.debug:
+        msg: "{{ec2_output}}"
+
+
+
+
+
+
