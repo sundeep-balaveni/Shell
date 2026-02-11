@@ -4,6 +4,17 @@
 
 
   tasks:
+    - name: creating the file
+      ansible.builtin.file:
+        name: test-file
+        path: /home
+        state: present
+        
+
+
+
+
+
     - name: disabling the defalut nodejs
       ansible.builtin.command: apt disable nodejs -y
 
@@ -17,7 +28,7 @@
         state: present
 
     - name: Creating the system user
-      ansible.builtin.user:
+      ansible.builtin.user  :
         name: sandeep
         system: yes
         home: /app
