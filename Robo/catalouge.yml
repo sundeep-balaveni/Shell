@@ -6,9 +6,8 @@
   tasks:
     - name: creating the file
       ansible.builtin.file:
-        name: test-file
-        path: /home
-        state: present
+        path: /home/test-file
+        state: touch
         
 
 
