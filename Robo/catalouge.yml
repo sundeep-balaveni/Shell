@@ -93,6 +93,8 @@
         src: catalouge.service          # file on control node
         dest: /etc/systemd/system/catalogue.service
         owner: root
+
+    - name: enabling the system 
   
 
     
