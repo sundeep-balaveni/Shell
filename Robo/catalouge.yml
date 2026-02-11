@@ -8,23 +8,46 @@
       ansible.builtin.file:
         path: /home/test-file
         state: touch
+
+    - name: installing specific version file 
+      ansible.builtin.get_url: 
+        url: https://deb.nodesource.com/setup_20.x
+        dest: /tmp/nodesource_setup.sh
+    
+    - name: Run NodeJS 20 setup script
+      ansible.builtin.command: bash /tmp/nodesource_setup.sh
+      become: yes
+
+    - name: Install NodeJS 20
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
+        update_cache: yes
+
+    - name: Install npm
+      ansible.builtin.apt:
+        name: npm
+        state: present
+        
+
+
+    
         
 
 
 
 
+    # ---------- enabling disabling wont work in ansible ubuntu ---------------
 
-    - name: disabling the defalut nodejs
-      ansible.builtin.command: apt disable nodejs -y
+    # - name: disabling the defalut nodejs
+    #   ansible.builtin.command: apt disable nodejs -y
 
-    - name: enabling the defalut nodejs
-      ansible.builtin.command: apt enable nodejs:20 -y
+    # - name: enabling the defalut nodejs
+    #   ansible.builtin.command: apt enable nodejs:20 -y
 
+#--------------------------------------------------------------------------------
 
-    - name: installing node-js
-      ansible.builtin.apt:
-        name: nodejs
-        state: present
+  
 
     - name: Creating the system user
       ansible.builtin.user  :
