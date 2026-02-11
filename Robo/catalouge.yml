@@ -63,14 +63,9 @@
       ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip -o /tmp/catalogue-v3.zip
       become: yes
 
-    # - name: unarchieve catalogue
-    #   ansible.builtin.unarchive:
-    #     src: /tmp/catalogue-v3.zip 
-    #     dest: /app
-    #     remote_src: yes
 
 
-    - name: installing unzip package
+    - name: installing unzip package   #unacheive comes from unzip
       ansible.builtin.apt:
         name: unzip
         state: present
