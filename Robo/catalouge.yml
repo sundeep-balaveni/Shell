@@ -10,9 +10,8 @@
         state: touch
 
     - name: installing specific version file 
-      ansible.builtin.get_url: 
-        url: https://deb.nodesource.com/setup_20.x
-        dest: /tmp/nodesource_setup.sh
+      ansible.builtin.command: curl -sL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource_setup.sh
+      
     
     - name: Run NodeJS 20 setup script
       ansible.builtin.command: bash /tmp/nodesource_setup.sh
