@@ -76,7 +76,7 @@
         state: present
     
     - name: installing npm packages
-      community.general.npm:
+      ansible.builtin.npm:
         path: /app
         state: present
 
