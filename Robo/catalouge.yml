@@ -12,7 +12,7 @@
 
 
     - name: installing node-js
-      ansible.builtin.dnf:
+      ansible.builtin.yum:
         name: nodejs
         state: present
 
