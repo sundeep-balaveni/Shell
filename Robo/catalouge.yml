@@ -76,7 +76,7 @@
         state: present
 
     - name: unzipping the package into /app
-      ansible.builtin.unachieve:
+      ansible.builtin.unarchive:
         src: /tmp/catalogue-v3.zip
         dest: /app
         remote_src: yes
