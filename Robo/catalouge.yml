@@ -58,10 +58,9 @@
         state: directory
         
 
-    - name: Download foo.conf
-      ansible.builtin.get_url:
-        url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-        dest: /tmp/catalogue-v3.zip 
+    - name: Download catalogue zip using curl
+      ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip -o /tmp/catalogue-v3.zip
+      become: yes
 
     - name: unarchieve catalogue
       ansible.builtin.unarchive:
