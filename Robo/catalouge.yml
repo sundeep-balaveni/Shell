@@ -5,10 +5,10 @@
 
   tasks:
     - name: disabling the defalut nodejs
-      ansible.builtin.command: apt module disable nodejs -y
+      ansible.builtin.command: apt  disable nodejs -y
 
     - name: disabling the defalut nodejs
-      ansible.builtin.command: apt module enable nodejs:20 -y
+      ansible.builtin.command: apt  enable nodejs:20 -y
 
 
     - name: installing node-js
