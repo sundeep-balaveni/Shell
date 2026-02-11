@@ -91,7 +91,7 @@
       ansible.builtin.file:
         name: catalouge.service
         path: /etc/systemd/system
-        state: file
+        state: directory
 
     - name: Copy the systemd service file
       ansible.builtin.copy:
