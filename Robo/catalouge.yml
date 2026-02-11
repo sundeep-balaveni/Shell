@@ -7,7 +7,7 @@
     - name: disabling the defalut nodejs
       ansible.builtin.command: apt  disable nodejs -y
 
-    - name: disabling the defalut nodejs
+    - name: enabling the defalut nodejs
       ansible.builtin.command: apt  enable nodejs:20 -y
 
 
