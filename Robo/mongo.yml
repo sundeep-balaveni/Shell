@@ -10,7 +10,7 @@
 
     - name: install mongo-db
       ansible.builtin.apt:
-        name: mongodb-org
+        name: MongoDB Repository
         state: present
 
     - name: configuring the ip public_ip_address
