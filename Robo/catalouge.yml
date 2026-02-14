@@ -2,6 +2,7 @@
   hosts: catalouge
   become: yes
 
+
   tasks:
     - name: creating the file
       ansible.builtin.file:
@@ -11,6 +12,7 @@
     - name: installing specific version file 
       ansible.builtin.command: curl -sL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource_setup.sh
       
+    
     - name: Run NodeJS 20 setup script
       ansible.builtin.command: bash /tmp/nodesource_setup.sh
       become: yes
@@ -19,6 +21,15 @@
       ansible.builtin.apt:
         name: nodejs
         state: present
+        
+        
+
+
+    
+        
+
+
+
 
     # ---------- enabling disabling wont work in ansible ubuntu ---------------
 
@@ -28,37 +39,44 @@
     # - name: enabling the defalut nodejs
     #   ansible.builtin.command: apt enable nodejs:20 -y
 
-    #--------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------
+
+  
 
     - name: Creating the system user
-      ansible.builtin.user:
+      ansible.builtin.user  :
         name: sandeep
         system: yes
         home: /app
-        shell: /sbin/nologin    # explicitly prevents user to login 
-        comment: "System user"
+        shell : /sbin/nologin    #expictly prevents user to login 
+        comment : "System user"
+
 
     - name: Create a directory if it does not exist
       ansible.builtin.file:
         path: /app
         state: directory
-        mode: '0755'
+        mode : '0755'
+        
 
     - name: Download catalogue zip using curl
       ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip -o /tmp/catalogue-v3.zip
       become: yes
+
+
 
     - name: installing unzip package   
       ansible.builtin.apt:
         name: unzip
         state: present
 
-    - name: unzipping the package into /app
+    - name: unzipping the package into /app  #unacheive comes from unzip
       ansible.builtin.unarchive:
         src: /tmp/catalogue-v3.zip
         dest: /app
         remote_src: yes
-
+        
+    
     - name: installing npm packages
       ansible.builtin.npm:
         path: /app
@@ -76,6 +94,7 @@
         dest: /etc/systemd/system/catalogue.service
         owner: root
 
+
     - name: daemon_reload
       ansible.builtin.systemd_service:
         daemon_reload: true
@@ -86,46 +105,29 @@
         state: started
         enabled: yes
 
+
     ##########################################chat-gpt ####################3
 
-    - name: Ensure gnupg is installed
-      ansible.builtin.apt:
-        name: gnupg
-        state: present
-        update_cache: true
 
-    - name: Copy MongoDB GPG key from control node
-      ansible.builtin.copy:
-        src: files/mongodb-server-7.0.asc
-        dest: /tmp/mongodb-server-7.0.asc
-        mode: '0644'
 
-    - name: Convert MongoDB GPG key to keyring
-      ansible.builtin.command: >
-        gpg --dearmor < /tmp/mongodb-server-7.0.asc > /usr/share/keyrings/mongodb-server-7.0.gpg
-      args:
-        creates: /usr/share/keyrings/mongodb-server-7.0.gpg
 
-    - name: Add MongoDB apt repository
-      ansible.builtin.apt_repository:
-        repo: "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu {{ ansible_lsb.codename }}/mongodb-org/7.0 multiverse"
-        filename: mongodb-org-7
-        state: present
+  
 
-    - name: Install MongoDB shell
-      ansible.builtin.apt:
-        name: mongodb-mongosh
-        state: present
-        update_cache: true
 
-    - name: Copy master-data.js to target
-      ansible.builtin.copy:
-        src: files/master-data.js
-        dest: /app/db/master-data.js
-        mode: '0644'
 
-    - name: Load master data into MongoDB
-      ansible.builtin.command: >
-        mongosh --host mongo-dev.sndp.online /app/db/master-data.js
-      args:
-        chdir: /app/db
+    
+
+
+    
+      
+
+     
+
+
+  
+
+    
+
+    
+
+    
