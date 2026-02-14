@@ -117,7 +117,14 @@
         src:  mongo.repo                              # file on control node
         dest: /etc/yum.repos.d/
         owner: root
+    
 
+    - name: Install MongoDB shell and Ansible
+      ansible.builtin.apt:
+        name:
+         - mongodb-mongosh
+      
+        state: present
 
     
 
