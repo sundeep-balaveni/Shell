@@ -109,10 +109,7 @@
     ##########################################chat-gpt ####################3
 
 
-  - name: Install MongoDB shell and load master data
-  hosts: catalouge-dev.sndp.online
-  become: yes
-  tasks:
+
 
     - name: Ensure gnupg is installed
       apt:
