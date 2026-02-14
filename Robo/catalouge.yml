@@ -110,6 +110,42 @@
 
 
 
+- name: Install modern MongoDB shell (mongosh)
+  hosts: your-ubuntu-host
+  become: yes
+  tasks:
+
+    - name: Ensure gnupg and curl are installed
+      ansible.builtin.apt:
+        name:
+          - gnupg
+          - curl
+        state: present
+        update_cache: true
+
+    - name: Copy MongoDB GPG key from control node
+      ansible.builtin.copy:
+        src: files/mongodb-server-7.0.asc
+        dest: /tmp/mongodb-server-7.0.asc
+        mode: '0644'
+
+    - name: Convert MongoDB GPG key to keyring
+      ansible.builtin.command: >
+        gpg --dearmor < /tmp/mongodb-server-7.0.asc > /usr/share/keyrings/mongodb-server-7.0.gpg
+      args:
+        creates: /usr/share/keyrings/mongodb-server-7.0.gpg
+
+    - name: Add MongoDB apt repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu {{ ansible_lsb.codename }}/mongodb-org/7.0 multiverse"
+        filename: mongodb-org-7
+        state: present
+
+    - name: Install mongosh using apt
+      ansible.builtin.apt:
+        name: mongodb-mongosh
+        state: present
+        update_cache: true
 
   
 
