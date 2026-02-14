@@ -15,6 +15,7 @@
       - mongo
       - catalouge
       - frontend
+      - user
 
   tasks:
     - name: Create EC2 instance
