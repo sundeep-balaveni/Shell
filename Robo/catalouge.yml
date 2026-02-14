@@ -110,10 +110,7 @@
 
 
 
-- name: Install modern MongoDB shell (mongosh)
-  hosts: your-ubuntu-host
-  become: yes
-  tasks:
+
 
     - name: Ensure gnupg and curl are installed
       ansible.builtin.apt:
