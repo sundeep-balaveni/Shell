@@ -124,7 +124,7 @@
       ansible.builtin.copy:
         src: files/mongodb-server-7.0.asc
         dest: /tmp/mongodb-server-7.0.asc
-        mode: '0644''
+        mode: '0644'
 
 
     - name: Convert MongoDB GPG key to keyring
