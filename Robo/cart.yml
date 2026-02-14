@@ -1,0 +1,6 @@
+- name: Install NodeJS on user host
+  hosts: cart
+  become: yes
+
+  roles:
+    - nodejs-role

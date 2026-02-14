@@ -16,6 +16,7 @@
       - catalouge
       - frontend
       - user
+      - cart
 
   tasks:
     - name: Create EC2 instance
