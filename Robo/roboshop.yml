@@ -17,6 +17,7 @@
       - frontend
       - user
       - cart
+      - redis
 
   tasks:
     - name: Create EC2 instance

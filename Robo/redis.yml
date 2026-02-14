@@ -1,0 +1,11 @@
+- name: installing redis
+  hosts : redis
+  become: yes
+
+
+
+- name: installing redis package
+  ansible.builtin.apt:
+    name: redis
+    state : present
+    
