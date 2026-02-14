@@ -65,12 +65,12 @@
 
 
 
-    - name: installing unzip package   #unacheive comes from unzip
+    - name: installing unzip package   
       ansible.builtin.apt:
         name: unzip
         state: present
 
-    - name: unzipping the package into /app
+    - name: unzipping the package into /app  #unacheive comes from unzip
       ansible.builtin.unarchive:
         src: /tmp/catalogue-v3.zip
         dest: /app
@@ -84,13 +84,13 @@
 
     - name: Create a directory if it does not exist
       ansible.builtin.file:
-        name: catalouge.service
+        name: catalogue.service
         path: /etc/systemd/system
         state: directory
 
     - name: Copy the systemd service file
       ansible.builtin.copy:
-        src: catalouge.service          # file on control node
+        src: catalouge.service                              # file on control node
         dest: /etc/systemd/system/catalogue.service
         owner: root
 
