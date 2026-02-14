@@ -109,35 +109,49 @@
     ##########################################chat-gpt ####################3
 
 
-    - name: Import MongoDB GPG key
-      ansible.builtin.apt_key:
-        url: https://pgp.mongodb.com/server-7.0.asc
-        state: present
+    - name: Install MongoDB shell and load master data
+  hosts: catalouge-dev.sndp.online
+  become: yes
+  tasks:
 
-    - name: Add MongoDB repository
-      ansible.builtin.apt_repository:
-        repo: "deb [signed-by=/usr/share/keyrings/mongodb-server-7.gpg] https://repo.mongodb.org/apt/ubuntu {{ ansible_lsb.codename }}/mongodb-org/7.0 multiverse"
-        state: present
-        filename: mongodb-org-7
-        codename: "{{ ansible_lsb.codename }}"
-
-    - name: Ensure gnupg is installed
+    - name: Ensure curl & gnupg are installed
       ansible.builtin.apt:
-        name: gnupg
+        name:
+          - curl
+          - gnupg
         state: present
-        update_cache: yes
+        update_cache: true
+
+    - name: Download MongoDB GPG key
+      ansible.builtin.get_url:
+        url: https://pgp.mongodb.com/server-7.0.asc
+        dest: /tmp/mongodb-server-7.0.asc
+        mode: '0644'
+
+    - name: Convert MongoDB GPG key to keyring
+      ansible.builtin.command: >
+        gpg --dearmor /tmp/mongodb-server-7.0.asc -o /usr/share/keyrings/mongodb-server-7.0.gpg
+      args:
+        creates: /usr/share/keyrings/mongodb-server-7.0.gpg
+
+    - name: Add MongoDB apt repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg] https://repo.mongodb.org/apt/ubuntu {{ ansible_lsb.codename }}/mongodb-org/7.0 multiverse"
+        filename: mongodb-org-7
+        state: present
 
     - name: Install MongoDB shell
       ansible.builtin.apt:
         name: mongodb-mongosh
         state: present
-        update_cache: yes
+        update_cache: true
 
     - name: Load master data into MongoDB
       ansible.builtin.command: >
         mongosh --host MONGODB-SERVER-IPADDRESS /app/db/master-data.js
       args:
         chdir: /app/db
+
 
     
 
