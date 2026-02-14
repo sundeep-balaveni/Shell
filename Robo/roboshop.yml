@@ -53,13 +53,11 @@
         ttl: 2
         value: "{{item.instances[0].private_ip_address}}"
         overwrite: true
-        wait: true 
-        
-      
+        wait: true     
       loop: "{{ec2_output.results}}"
 
 
-    - name: creating route 53 record 
+    - name: creating route 53 record for frontend
       amazon.aws.route53:
         state: present
         zone: "{{domain}}"
