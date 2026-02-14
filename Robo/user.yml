@@ -3,4 +3,4 @@
   become: yes
 
   roles: 
-    - nodejs-role
+    - Robo/files/Roles/nodejs-role
