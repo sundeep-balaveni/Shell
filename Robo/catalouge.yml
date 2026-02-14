@@ -122,7 +122,7 @@
 
     - name: Copy MongoDB GPG key from control node
       ansible.builtin.copy:
-        src: Robo/files/mongodb-server-7.0.asc
+        remote_src:  Robo/files/mongodb-server-7.0.asc
         dest: /tmp/mongodb-server-7.0.asc
         mode: '0644'
 
