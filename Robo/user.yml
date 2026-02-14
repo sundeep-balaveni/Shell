@@ -1,6 +1,6 @@
 - name: Initializing user module
-  hosts: user
+  host: user
   become: yes
 
   roles: 
-    - /home/ec2-user/Shell/Robo/files/Roles
+    - nodejs-role
