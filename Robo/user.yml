@@ -1,5 +1,5 @@
 - name: Initializing user module
-  host: user
+  hosts: user
   become: yes
 
   roles: 
