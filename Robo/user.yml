@@ -1,0 +1,6 @@
+- name: Initializing user module
+  host: user
+  become: yes
+
+  roles: 
+    - nodejs-role

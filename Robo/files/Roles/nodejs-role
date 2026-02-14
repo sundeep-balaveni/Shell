@@ -1,0 +1,21 @@
+- name: installing node js 
+  
+  
+  tasks:
+    - name: creating the file
+      ansible.builtin.file:
+        path: /home/test-file
+        state: touch
+
+    - name: installing specific version file 
+      ansible.builtin.command: curl -sL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource_setup.sh
+      
+    
+    - name: Run NodeJS 20 setup script
+      ansible.builtin.command: bash /tmp/nodesource_setup.sh
+      become: yes
+
+    - name: Install NodeJS 20
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
