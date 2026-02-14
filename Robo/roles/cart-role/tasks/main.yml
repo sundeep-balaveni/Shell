@@ -75,6 +75,6 @@
 
     - name: enabling the user
       ansible.builtin.service:
-        name: user.service
+        name: cart.service
         state: started
         enabled: yes
