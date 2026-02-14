@@ -1,7 +1,4 @@
-- name: installing node js 
-  
-  
-  tasks:
+
     - name: creating the file
       ansible.builtin.file:
         path: /home/test-file
