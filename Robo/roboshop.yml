@@ -31,10 +31,9 @@
           Project : Roboshop
           Env: dev
           name: "{{item}}-{{env}}"
-        network:
-          - assign_public_ip: true
         network_interfaces:
-          -  - assign_public_ip: true
+          - assign_public_ip: true
+
       
       loop : "{{instances}}"
       register:  ec2_output
