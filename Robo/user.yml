@@ -1,6 +1,6 @@
-- name: Initializing user module
+- name: Install NodeJS on user host
   hosts: user
   become: yes
 
-  roles: 
+  roles:
     - nodejs-role
