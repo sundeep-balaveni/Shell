@@ -3,9 +3,9 @@
   become: yes
 
 
+  tasks:
 
-- name: installing redis package
-  ansible.builtin.apt:
-    name: redis
-    state : present
-    
+  - name: installing redis package
+    ansible.builtin.apt:
+      name: redis
+      state : present
