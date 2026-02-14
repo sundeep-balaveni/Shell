@@ -3,7 +3,8 @@
   hosts: mongodb
   become: yes
 
-
+  vars:
+  ansible_python_interpreter: /usr/bin/python3
 
   roles:
     - trfore.mongodb_install
