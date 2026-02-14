@@ -3,4 +3,4 @@
   become: yes
 
   roles: 
-    - /home/ec2-user/Shell/Robo/files/Roles/nodejs-role
+    - /home/ec2-user/Shell/Robo/files/Roles
