@@ -95,6 +95,11 @@
         owner: root
 
 
+    - name: daemon_reload
+      ansible.builtin.systemd_service:
+      daemon_reload: true
+
+
   
 
     
