@@ -128,7 +128,7 @@
 
 
     - name: Convert MongoDB GPG key to keyring
-      ansible.builtin.shell: gpg --dearmor /tmp/mongodb-server-7.0.asc -o /usr/share/keyrings/mongodb-server-7.0.gpg
+      ansible.builtin.shell: cat /tmp/mongodb-server-7.0.asc | gpg --dearmor --output /usr/share/keyrings/mongodb-server-7.0.gpg
       args:
         creates: /usr/share/keyrings/mongodb-server-7.0.gpg
 
