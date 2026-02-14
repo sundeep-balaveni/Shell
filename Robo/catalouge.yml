@@ -144,7 +144,7 @@
         update_cache: true
 
     - name: load the mongodb data
-      ansible.builtin.command: mongosh --host mongo-dev.sndp.online </app/db/master-data.js
+      ansible.builtin.shell: mongosh --host mongo-dev.sndp.online </app/db/master-data.js
       become: yes
       tags: mongo
 
