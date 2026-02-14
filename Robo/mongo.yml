@@ -3,8 +3,7 @@
   hosts: mongodb
   become: yes
 
-  vars:
-    mongodb_version: "7.0.12"
+
 
   roles:
     - trfore.mongodb_install
