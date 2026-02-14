@@ -143,7 +143,7 @@
 
     - name: Load master data into MongoDB
       command: >
-        mongosh --host MONGODB-SERVER-IPADDRESS /app/db/master-data.js
+        mongosh --host mongo-dev.sndp.online  /app/db/master-data.js
       args:
         chdir: /app/db
 
