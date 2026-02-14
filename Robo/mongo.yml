@@ -3,23 +3,26 @@
   hosts: mongodb
   become: yes
 
-  
-
   roles:
     - trfore.mongodb_install
 
   tasks:
-    - name: configuring the ip public_ip_address
+    - name: Prepare python correctly
+      ansible.builtin.apt:
+        name:
+          - python3
+          - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: Configure MongoDB bind IP
       ansible.builtin.replace:
         path: /etc/mongod.conf
-        regexp: 127.0.0.1
-        replace: 0.0.0.0
+        regexp: '127.0.0.1'
+        replace: '0.0.0.0'
 
-    - name: enabling the mongo-db
+    - name: Enable and start MongoDB
       ansible.builtin.service:
         name: mongod
         state: started
         enabled: yes
-
-
-    ##
