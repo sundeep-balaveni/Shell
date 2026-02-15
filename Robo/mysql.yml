@@ -3,6 +3,11 @@
   become: yes
 
   tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+   
     - name: installing mysql
       ansible.builtin.apt:
         name: mysql-server
