@@ -12,3 +12,10 @@
       ansible.builtin.apt:
         name: mysql-server
         state: present
+
+
+    - name: enabling the catalogue
+      ansible.builtin.service:
+        name: catalogue.service
+        state: started
+        enabled: yes
