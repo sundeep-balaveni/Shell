@@ -19,6 +19,7 @@
       - cart
       - redis
       - mysql
+      - frontend
 
   tasks:
     - name: Create EC2 instance
