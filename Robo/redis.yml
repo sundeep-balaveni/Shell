@@ -21,8 +21,27 @@
 
   
 
-  - name: enabling the catalogue
+  - name: enabling the redis
     ansible.builtin.service:
-      name: catalogue.service
+      name: redis-server
       state: started
       enabled: yes
+
+
+  - name: Replacing the ports
+    ansible.builtin.replace:
+      path: /etc/redis/redis.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
+  
+  - name: Change protected-mode to no
+    ansible.builtin.lineinfile:
+      path: /etc/redis/redis.conf
+      regexp: '5686protected-mode'
+      line: 'protected-mode no'
+      backup: yes
+
+  - name: Restart Redis
+    ansible.builtin.service:
+      name: redis-server
+      state: restarted
