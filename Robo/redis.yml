@@ -37,7 +37,7 @@
   - name: Change protected-mode to no
     ansible.builtin.lineinfile:
       path: /etc/redis/redis.conf
-      regexp: '5686protected-mode'
+      regexp: 'protected-mode'
       line: 'protected-mode no'
       backup: yes
 
