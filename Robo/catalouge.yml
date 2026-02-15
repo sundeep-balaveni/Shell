@@ -9,15 +9,15 @@
         path: /home/test-file
         state: touch
 
-    - name: installing specific version file 
+    - name: installing specific version file     ##downloads the scrips
       ansible.builtin.command: curl -sL https://deb.nodesource.com/setup_20.x -o /tmp/nodesource_setup.sh
       
     
-    - name: Run NodeJS 20 setup script
+    - name: Run NodeJS 20 setup script         ##runs the script
       ansible.builtin.command: bash /tmp/nodesource_setup.sh
       become: yes
 
-    - name: Install NodeJS 20
+    - name: Install NodeJS 20                     
       ansible.builtin.apt:
         name: nodejs
         state: present

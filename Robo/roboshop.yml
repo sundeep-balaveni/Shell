@@ -18,6 +18,7 @@
       - user
       - cart
       - redis
+      - mysql
 
   tasks:
     - name: Create EC2 instance
