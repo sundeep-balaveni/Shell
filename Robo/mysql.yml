@@ -3,7 +3,7 @@
   become: yes
 
   tasks:
-    -name: installing mysql
-    ansible.builtin.apt:
-      name: mysql-server
-      state: present
+    - name: installing mysql
+      ansible.builtin.apt:
+        name: mysql-server
+        state: present
