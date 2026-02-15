@@ -7,7 +7,7 @@
 
   - name: installing redis package
     ansible.builtin.apt:
-      name: redis-server=7:7.2.0-1ubuntu0.1 
+      name: redis-server
       state : present
 
 
