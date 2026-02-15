@@ -34,10 +34,10 @@
         recurse: yes
         force: yes
 
-    - name: Download frontend zip
-      get_url:
-        url: "{{ frontend_zip_url }}"
-        dest: "/tmp/frontend.zip"
+    - name: Download frontend zip using curl
+      ansible.builtin.shell: "curl -sSL -o /tmp/frontend.zip {{ frontend_zip_url }}"
+      args:
+        creates: /tmp/frontend.zip
 
     - name: Extract frontend content
       unarchive:
