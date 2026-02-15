@@ -19,7 +19,7 @@
 
     - name: Creating the system user
       ansible.builtin.user  :
-        name: sandeep-user
+        name: roboshop
         system: yes
         home: /app
         shell : /sbin/nologin    #expictly prevents user to login 
