@@ -5,7 +5,7 @@
   vars:
     frontend_zip_url: "https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip"
     frontend_webroot: "/var/www/html"
-    backend_catalogue: "redis-dev.sndp.online"
+    backend_catalogue: "catalogue-dev.sndp.online"
     backend_user: "user-dev.sndp.online"
     backend_cart: "cart-dev.sndp.online"
     # backend_shipping: " redis-dev.sndp.online"
