@@ -97,7 +97,7 @@
       name: mysql-client
       state: present
       update_cache: yes
-      become: yes
+      
 
   - name: Load Schema
     ansible.builtin.shell: |
