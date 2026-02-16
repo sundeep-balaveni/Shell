@@ -22,6 +22,7 @@
       - frontend
       - shipping
       - Rabitmq
+      - payment
 
   tasks:
     - name: Create EC2 instance
