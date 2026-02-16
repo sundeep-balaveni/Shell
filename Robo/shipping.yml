@@ -3,10 +3,10 @@
   become: yes
 
   tasks:
-  name: installing maven packages 
-  ansible.builtin.apt:
-    name: maven
-    state: present
+  - name: installing maven packages 
+    ansible.builtin.apt:
+      name: maven
+      state: present
 
 
   
