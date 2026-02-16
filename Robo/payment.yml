@@ -5,11 +5,12 @@
   vars:
     app_user: roboshop
     app_dir: /app
-    cart_host: "<CART-SERVER-IPADDRESS>"
+    venv_dir: /app/venv
+    cart_host: cart-dev.sndp.online
     cart_port: 8080
-    user_host: "<USER-SERVER-IPADDRESS>"
+    user_host: user-dev.sndp.online
     user_port: 8080
-    amqp_host: "<RABBITMQ-SERVER-IPADDRESS>"
+    amqp_host: Rabitmq-dev.sndp.online
     amqp_user: roboshop
     amqp_pass: roboshop123
 
@@ -19,6 +20,7 @@
       apt:
         name:
           - python3
+          - python3-venv
           - python3-pip
           - python3-dev
           - gcc
@@ -43,7 +45,7 @@
         group: "{{ app_user }}"
         mode: '0755'
 
-    - name: Download catalogue zip using curl
+    - name: Download Payment application zip using curl
       ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip -o /tmp/payment.zip
       become: yes
 
@@ -55,11 +57,17 @@
         owner: "{{ app_user }}"
         group: "{{ app_user }}"
 
-    - name: Install Python dependencies from requirements.txt
+    - name: Create Python virtual environment
+      ansible.builtin.command:
+        cmd: python3 -m venv "{{ venv_dir }}"
+        creates: "{{ venv_dir }}"
+
+    - name: Install Python dependencies inside virtualenv
       ansible.builtin.pip:
         requirements: "{{ app_dir }}/requirements.txt"
-        executable: pip3
-        extra_args: "--break-system-packages"
+        virtualenv: "{{ venv_dir }}"
+        virtualenv_python: python3
+        state: present
 
     - name: Create systemd service file for Payment
       ansible.builtin.copy:
@@ -81,7 +89,7 @@
           Environment=AMQP_HOST={{ amqp_host }}
           Environment=AMQP_USER={{ amqp_user }}
           Environment=AMQP_PASS={{ amqp_pass }}
-          ExecStart=/usr/local/bin/uwsgi --ini payment.ini
+          ExecStart={{ venv_dir }}/bin/uwsgi --ini payment.ini
           ExecStop=/bin/kill -9 $MAINPID
           SyslogIdentifier=payment
 
