@@ -1,0 +1,102 @@
+- name: Install and configure Dispatch service
+  hosts: dispatch
+  become: yes
+
+  vars:
+    app_user: roboshop
+    app_dir: /app
+    amqp_host: Rabitmq-dev.sndp.online
+    amqp_user: roboshop
+    amqp_pass: roboshop123
+
+  tasks:
+
+    - name: Install GoLang and unzip
+      apt:
+        name:
+          - golang
+          - unzip
+          - curl
+        state: present
+        update_cache: yes
+
+    - name: Create application system user
+      ansible.builtin.user:
+        name: "{{ app_user }}"
+        system: yes
+        home: "{{ app_dir }}"
+        shell: /sbin/nologin
+        comment: "roboshop system user"
+
+    - name: Create application directory
+      ansible.builtin.file:
+        path: "{{ app_dir }}"
+        state: directory
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+        mode: '0755'
+
+    - name: Download Dispatch application zip using curl
+      ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/dispatch-v3.zip -o /tmp/dispatch.zip
+      become: yes
+
+    - name: Unzip Dispatch application
+      ansible.builtin.unarchive:
+        src: /tmp/dispatch.zip
+        dest: "{{ app_dir }}"
+        remote_src: yes
+        owner: "{{ app_user }}"
+        group: "{{ app_user }}"
+
+    - name: Initialize Go module
+      ansible.builtin.command:
+        cmd: go mod init dispatch
+        chdir: "{{ app_dir }}"
+        creates: "{{ app_dir }}/go.mod"
+        environment:
+          GOPATH: "{{ app_dir }}"
+
+    - name: Download Go dependencies
+      ansible.builtin.command:
+        cmd: go get
+        chdir: "{{ app_dir }}"
+        environment:
+          GOPATH: "{{ app_dir }}"
+
+    - name: Build Dispatch binary
+      ansible.builtin.command:
+        cmd: go build
+        chdir: "{{ app_dir }}"
+        environment:
+          GOPATH: "{{ app_dir }}"
+
+    - name: Create systemd service file for Dispatch
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/dispatch.service
+        owner: root
+        group: root
+        mode: '0644'
+        content: |
+          [Unit]
+          Description=Dispatch Service
+
+          [Service]
+          User={{ app_user }}
+          Environment=AMQP_HOST={{ amqp_host }}
+          Environment=AMQP_USER={{ amqp_user }}
+          Environment=AMQP_PASS={{ amqp_pass }}
+          ExecStart={{ app_dir }}/dispatch
+          SyslogIdentifier=dispatch
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd daemon
+      ansible.builtin.systemd:
+        daemon_reload: yes
+
+    - name: Enable and start Dispatch service
+      ansible.builtin.service:
+        name: dispatch
+        state: started
+        enabled: yes

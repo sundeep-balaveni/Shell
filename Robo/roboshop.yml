@@ -23,6 +23,7 @@
       - shipping
       - Rabitmq
       - payment
+      - dispatch
 
   tasks:
     - name: Create EC2 instance
