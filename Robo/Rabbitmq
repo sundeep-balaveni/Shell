@@ -1,0 +1,59 @@
+- name: installing Rabitmq
+  hosts: Rabitmq
+  become: yes
+
+  vars:
+    rabbitmq_user: roboshop
+    rabbitmq_password: roboshop123
+
+
+
+  tasks:
+
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      name: rabbitmq.repo
+      path: /etc/yum.repos.d
+      state: directory
+
+  - name: Copy the systemd service file
+    ansible.builtin.copy:
+      src: rabbitmq.repo                             # file on control node
+      dest: /etc/yum.repos.d/rabbitmq.repo
+      owner: root
+
+
+   
+    
+
+ 
+
+  - name: Update apt cache
+    apt:
+      update_cache: yes
+
+  - name: Install Erlang (required for RabbitMQ)
+    apt:
+      name: erlang
+      state: present
+
+  - name: Install RabbitMQ server
+    apt:
+      name: rabbitmq-server
+      state: present
+
+  - name: Enable and start RabbitMQ service
+    systemd:
+      name: rabbitmq-server
+      enabled: yes
+      state: started
+
+  - name: Add RabbitMQ user
+    command: rabbitmqctl add_user {{ rabbitmq_user }} {{ rabbitmq_password }}
+    args:
+      creates: "/var/lib/rabbitmq/.{{ rabbitmq_user }}"   # Optional: prevent re-running
+
+  - name: Set permissions for RabbitMQ user
+    command: rabbitmqctl set_permissions -p / {{ rabbitmq_user }} ".*" ".*" ".*"
+
+
