@@ -43,11 +43,9 @@
         group: "{{ app_user }}"
         mode: '0755'
 
-    - name: Download Payment application zip
-      ansible.builtin.get_url:
-        url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
-        dest: /tmp/payment.zip
-        mode: '0644'
+    - name: Download catalogue zip using curl
+      ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip -o /tmp/payment.zip
+      become: yes
 
     - name: Unzip Payment application
       ansible.builtin.unarchive:
