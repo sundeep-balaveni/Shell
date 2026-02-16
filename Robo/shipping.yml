@@ -1,11 +1,11 @@
-- name: Shiiping module installation 
+- name: Shipping module installation 
   hosts: shipping 
   become: yes
 
 
   vars:
-  mysql_host: mysql-dev.sndp.online
-  mysql_root_password: RoboShop@1
+    mysql_host: mysql-dev.sndp.online
+    mysql_root_password: RoboShop@1
 
   tasks:
   - name: installing maven packages 
