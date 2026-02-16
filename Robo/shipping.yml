@@ -45,10 +45,10 @@
       remote_src: yes
         
     
-  - name: installing npm packages
-    ansible.builtin.npm:
-      path: /app
-      state: present
+  # - name: installing npm packages
+  #   ansible.builtin.npm:
+  #     path: /app
+  #     state: present
 
   - name: Build shipping application
     ansible.builtin.command: mvn clean package
