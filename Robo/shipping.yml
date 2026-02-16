@@ -9,6 +9,7 @@
         - maven
         - openjdk-17-jdk
       state: present
+      update_cache: yes
 
   - name: Creating the system user
     ansible.builtin.user  :
