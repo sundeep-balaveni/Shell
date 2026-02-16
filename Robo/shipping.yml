@@ -1,5 +1,5 @@
 - name: Shiiping module installation 
-  hosts: shippping 
+  hosts: shipping 
   become: yes
 
   tasks:
