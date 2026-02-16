@@ -9,7 +9,7 @@
     backend_user: "user-dev.sndp.online"
     backend_cart: "cart-dev.sndp.online"
     backend_shipping: "shipping-dev.sndp.online"
-    backend_payment: "payment-dev.sndp.online "
+    backend_payment: "payment-dev.sndp.online"
 
   tasks:
 
