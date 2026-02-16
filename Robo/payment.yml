@@ -59,6 +59,7 @@
       ansible.builtin.pip:
         requirements: "{{ app_dir }}/requirements.txt"
         executable: pip3
+        extra_args: "--break-system-packages"
 
     - name: Create systemd service file for Payment
       ansible.builtin.copy:
