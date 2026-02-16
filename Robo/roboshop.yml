@@ -21,6 +21,7 @@
       - mysql
       - frontend
       - shipping
+      - Rabitmq
 
   tasks:
     - name: Create EC2 instance
