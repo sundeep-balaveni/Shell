@@ -24,3 +24,10 @@
     - name: Set MySQL root password
       ansible.builtin.shell: mysqladmin -u root password "RoboShop@1"
 
+
+    - name: Ensure MySQL service is started and enabled
+      ansible.builtin.service:
+        name: mysql
+        state: restarted
+        enabled: yes
+
