@@ -2,6 +2,11 @@
   hosts: shipping 
   become: yes
 
+
+  vars:
+  mysql_host: mysql-dev.sndp.online
+  mysql_root_password: RoboShop@1
+
   tasks:
   - name: installing maven packages 
     ansible.builtin.apt:
@@ -82,6 +87,40 @@
       name: shipping.service
       state: started
       enabled: yes
+
+
+
+
+
+  - name: Install MySQL client
+    ansible.builtin.apt:
+      name: mysql-client
+      state: present
+      update_cache: yes
+
+  - name: Load Schema
+    ansible.builtin.shell: |
+      mysql -h {{ mysql_host }} -uroot -p{{ mysql_root_password }} < /app/db/schema.sql
+    args:
+      executable: /bin/bash
+
+  - name: Load App User
+    ansible.builtin.shell: |
+      mysql -h {{ mysql_host }} -uroot -p{{ mysql_root_password }} < /app/db/app-user.sql
+    args:
+      executable: /bin/bash
+
+  - name: Load Master Data
+    ansible.builtin.shell: |
+      mysql -h {{ mysql_host }} -uroot -p{{ mysql_root_password }} < /app/db/master-data.sql
+    args:
+      executable: /bin/bash
+
+  - name: Restart Shipping Service
+    ansible.builtin.systemd:
+      name: shipping
+      state: restarted
+
 
 
 
