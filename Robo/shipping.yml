@@ -8,5 +8,79 @@
       name: maven
       state: present
 
+  - name: Creating the system user
+    ansible.builtin.user  :
+      name: roboshop
+      system: yes
+      home: /app
+      shell : /sbin/nologin    #expictly prevents user to login 
+      comment : "System user"
+
+
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /app
+      state: directory
+      mode : '0755'
+        
+
+  - name: Download catalogue zip using curl
+    ansible.builtin.command: curl -sL https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip   -o /tmp/shipping-v3.zip
+    become: yes
+
+
+##installing unzip package explictly because it is ubuntu 
+  - name: installing unzip package   
+    ansible.builtin.apt:
+      name: unzip
+      state: present
+
+  - name: unzipping the package into /app  #unacheive comes from unzip
+    ansible.builtin.unarchive:
+      src: /tmp/shipping-v3.zip
+      dest: /app
+      remote_src: yes
+        
+    
+  - name: installing npm packages
+    ansible.builtin.npm:
+      path: /app
+      state: present
+
+  - name: Build shipping application
+    ansible.builtin.command: mvn clean package
+    args:
+      chdir: /app
+
+  - name: Rename jar file
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+    args:
+      chdir: /app
+
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      name: shipping.service
+      path: /etc/systemd/system
+      state: directory
+
+  - name: Copy the systemd service file
+    ansible.builtin.copy:
+      src: shipping-file                             # file on control node
+      dest: /etc/systemd/system/shipping.service
+      owner: root
+
+
+  - name: daemon_reload
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+
+  - name: enabling the shipping
+    ansible.builtin.service:
+      name: shipping.service
+      state: started
+      enabled: yes
+
+
+
 
   
