@@ -14,8 +14,8 @@
         state: present
 
 
-    - name: enabling the catalogue
+    - name: enabling the mysql
       ansible.builtin.service:
-        name: catalogue.service
+        name: mysql-server
         state: started
         enabled: yes
