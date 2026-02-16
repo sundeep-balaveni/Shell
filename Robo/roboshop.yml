@@ -20,6 +20,7 @@
       - redis
       - mysql
       - frontend
+      - shipping
 
   tasks:
     - name: Create EC2 instance

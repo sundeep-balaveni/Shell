@@ -1,0 +1,12 @@
+- name: Shiiping module installation 
+  hosts: shippping 
+  become: yes
+
+  tasks:
+  name: installing maven packages 
+  ansible.builtin.apt:
+    name: maven
+    state: present
+
+
+  
