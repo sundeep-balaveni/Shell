@@ -11,11 +11,9 @@
     - name: installing mysql
       ansible.builtin.apt:
         name: mysql-server
-        state: present
-
-
-    - name: enabling the mysqld
-      ansible.builtin.service:
-        name: mysqld
         state: started
         enabled: yes
+
+    - name: Set MySQL root password
+      ansible.builtin.shell: mysqladmin -u root password "RoboShop@1"
+
