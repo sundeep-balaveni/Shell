@@ -7,4 +7,4 @@
   tasks:
     - name: importing the role for listing ec2
       import_role:
-        name: Robo/roles/Dynamic-inventory
+        name: Dynamic-inventory
