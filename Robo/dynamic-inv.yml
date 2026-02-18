@@ -1,0 +1,10 @@
+- name: listing the ec2-through dynamic inventory 
+  hosts: local
+  become: yes
+  connection: local
+
+
+  tasks:
+    - name: importing the role for listing ec2
+      import_role:
+        name: Robo/roles/Dynamic-inventory
