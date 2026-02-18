@@ -1,9 +1,11 @@
-- name: listing the ec2-through dynamic inventory 
-  hosts: local
-  connection: local
+# - name: listing the ec2-through dynamic inventory 
+#   hosts: local
+#   connection: local
 
 
-  tasks:
-    - name: importing the role for listing ec2
-      import_role:
-        name: Dynamic-inventory
+#   tasks:
+#     - name: importing the role for listing ec2
+#       import_role:
+#         name: Dynamic-inventory
+
+
