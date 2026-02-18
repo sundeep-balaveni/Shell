@@ -1,6 +1,5 @@
 - name: listing the ec2-through dynamic inventory 
   hosts: local
-  become: yes
   connection: local
 
 

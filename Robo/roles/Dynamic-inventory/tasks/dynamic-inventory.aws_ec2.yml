@@ -3,6 +3,3 @@ plugin: amazon.aws.aws_ec2
 regions:
 - us-east-1
 
-hostnames:
-  # This option allows displaying the public ip addresses.
-  - ip-address
